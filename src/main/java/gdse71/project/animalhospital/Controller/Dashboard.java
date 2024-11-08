@@ -85,7 +85,16 @@ public class Dashboard {
     }
 
     @FXML
-    void inventorybtn(ActionEvent event) {
+    void inventorybtn(ActionEvent event) { //this is medicine button in dashboard
+        try {
+            Stage stage = (Stage) pet.getScene().getWindow();
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Medicine.fxml"))));
+            stage.setTitle("Pets & Vets Animal Hospital");
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

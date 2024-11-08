@@ -2,6 +2,7 @@ package gdse71.project.animalhospital.model;
 
 import gdse71.project.animalhospital.CrudUtil.Util;
 import gdse71.project.animalhospital.dto.Employeedto;
+import gdse71.project.animalhospital.dto.Ownerdto;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
