@@ -9,19 +9,19 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="870.0" prefWidth="890.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gdse71.project.animalhospital.Controller.Login">
+<AnchorPane prefHeight="870.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gdse71.project.animalhospital.Controller.Login">
    <children>
-      <ImageView fx:id="image" fitHeight="900.0" fitWidth="1200.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true" style="\\: true;">
+      <ImageView fx:id="image" fitHeight="880.0" fitWidth="1200.0" layoutY="-10.0" pickOnBounds="true" style="\\: true;">
          <image>
             <Image url="@../../../../../../../Pictures/animall%20hosptila/login.png" />
          </image>
       </ImageView>
-      <Label layoutX="130.0" layoutY="47.0" prefHeight="109.0" prefWidth="682.0" text="PETS &amp; VETS ANIMAL HOSPITAL">
+      <Label layoutX="323.0" layoutY="31.0" prefHeight="109.0" prefWidth="682.0" text="PETS &amp; VETS ANIMAL HOSPITAL">
          <font>
             <Font name="Dyuthi Regular" size="50.0" />
          </font>
       </Label>
-      <Pane layoutX="188.0" layoutY="184.0" opacity="0.84" prefHeight="552.0" prefWidth="515.0" style="-fx-background-color: #e67e22; -fx-background-radius: 12;">
+      <Pane layoutX="379.0" layoutY="183.0" opacity="0.84" prefHeight="552.0" prefWidth="515.0" style="-fx-background-color: #e67e22; -fx-background-radius: 12;">
          <children>
             <TextField fx:id="userName" layoutX="47.0" layoutY="184.0" prefHeight="49.0" prefWidth="403.0" promptText="user name" style="-fx-background-radius: 12;">
                <font>

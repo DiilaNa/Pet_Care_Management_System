@@ -11,14 +11,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="870.0" prefWidth="890.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gdse71.project.animalhospital.Controller.PetRecordController">
+<AnchorPane prefHeight="870.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gdse71.project.animalhospital.Controller.PetRecordController">
    <children>
-      <ImageView fx:id="image" fitHeight="900.0" fitWidth="1200.0" opacity="0.9" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="image" fitHeight="900.0" fitWidth="1200.0" opacity="0.9" pickOnBounds="true">
          <image>
             <Image url="@../../../../../../../Pictures/animall%20hosptila/petrecord.jpeg" />
          </image>
       </ImageView>
-      <Label layoutX="246.0" layoutY="29.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="51.0" prefWidth="409.0" style="-fx-background-color: black;" text="PET HEALTH RECORDS" textFill="WHITE">
+      <Label layoutX="450.0" layoutY="41.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="51.0" prefWidth="409.0" style="-fx-background-color: black;" text="PET HEALTH RECORDS" textFill="WHITE">
          <font>
             <Font name="DejaVu Sans Bold Oblique" size="32.0" />
          </font>
@@ -43,24 +43,24 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="590.0" layoutY="136.0" text="PET ID" textFill="#f8f5f5">
+      <Label layoutX="717.0" layoutY="137.0" text="PET ID" textFill="#f8f5f5">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
       </Label>
-      <TableView fx:id="table" layoutY="466.0" onMouseClicked="#MouseClicked" opacity="0.96" prefHeight="438.0" prefWidth="900.0" style="-fx-background-color: #f39c12;">
+      <TableView fx:id="table" layoutY="466.0" onMouseClicked="#MouseClicked" opacity="0.96" prefHeight="438.0" prefWidth="1200.0" style="-fx-background-color: #f39c12;">
         <columns>
-          <TableColumn fx:id="tablerecid" prefWidth="154.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="RECORD ID" />
-          <TableColumn fx:id="tableDescription" prefWidth="177.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="DESCRIPTION" />
-            <TableColumn fx:id="tablestatus" prefWidth="174.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="STATUS" />
-            <TableColumn fx:id="tableWeight" prefWidth="167.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="WEIGHT" />
-            <TableColumn fx:id="tablepetid" prefWidth="227.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="PET ID" />
+          <TableColumn fx:id="tablerecid" prefWidth="217.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="RECORD ID" />
+          <TableColumn fx:id="tableDescription" prefWidth="219.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="DESCRIPTION" />
+            <TableColumn fx:id="tablestatus" prefWidth="232.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="STATUS" />
+            <TableColumn fx:id="tableWeight" prefWidth="256.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="WEIGHT" />
+            <TableColumn fx:id="tablepetid" prefWidth="275.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="PET ID" />
         </columns>
       </TableView>
-      <TextField fx:id="recID" layoutX="279.0" layoutY="134.0" prefHeight="29.0" prefWidth="194.0" />
-      <TextField fx:id="weight" layoutX="279.0" layoutY="193.0" prefHeight="29.0" prefWidth="194.0" />
-      <TextField fx:id="status" layoutX="279.0" layoutY="258.0" prefHeight="29.0" prefWidth="194.0" />
-      <TextField fx:id="desc" layoutX="279.0" layoutY="319.0" prefHeight="29.0" prefWidth="194.0" />
+      <TextField fx:id="recID" layoutX="279.0" layoutY="134.0" prefHeight="29.0" prefWidth="258.0" />
+      <TextField fx:id="weight" layoutX="279.0" layoutY="193.0" prefHeight="29.0" prefWidth="258.0" />
+      <TextField fx:id="status" layoutX="279.0" layoutY="258.0" prefHeight="29.0" prefWidth="258.0" />
+      <TextField fx:id="desc" layoutX="279.0" layoutY="319.0" prefHeight="29.0" prefWidth="258.0" />
       <Button fx:id="save" layoutX="55.0" layoutY="394.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="41.0" prefWidth="104.0" style="-fx-background-radius: 23; -fx-background-color: #d35400;" text="SAVE" textFill="#f5e3e3">
          <font>
             <Font name="DejaVu Sans Mono Bold" size="20.0" />
@@ -82,6 +82,6 @@
             <Font name="DejaVu Sans Mono Bold" size="20.0" />
          </font>
       </Button>
-      <ComboBox fx:id="prtID" layoutX="686.0" layoutY="137.0" onAction="#prtIDACTION" prefHeight="24.0" prefWidth="171.0" promptText="select a pet id " />
+      <ComboBox fx:id="prtID" layoutX="857.0" layoutY="139.0" onAction="#prtIDACTION" prefHeight="24.0" prefWidth="215.0" promptText="select a pet id " />
    </children>
 </AnchorPane>

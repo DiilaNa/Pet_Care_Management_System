@@ -12,55 +12,55 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="870.0" prefWidth="890.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gdse71.project.animalhospital.Controller.AppointmentsController">
+<AnchorPane prefHeight="870.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gdse71.project.animalhospital.Controller.AppointmentsController">
    <children>
-      <ImageView fx:id="image" fitHeight="887.0" fitWidth="720.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="image" fitHeight="887.0" fitWidth="1036.0" pickOnBounds="true">
          <image>
             <Image url="@../../../../../../../Pictures/animall%20hosptila/Appointments.jpeg" />
          </image>
       </ImageView>
-      <Pane layoutX="720.0" layoutY="-5.0" prefHeight="861.0" prefWidth="173.0" style="-fx-background-color: black;">
+      <Pane layoutX="1035.0" prefHeight="887.0" prefWidth="175.0" style="-fx-background-color: black;">
          <children>
             <Button fx:id="save" layoutX="41.0" layoutY="84.0" mnemonicParsing="false" onAction="#saveAPT" prefHeight="36.0" prefWidth="92.0" style="-fx-background-color: #d35400;" text="SAVE" textFill="WHITE" />
             <Button fx:id="update" layoutX="41.0" layoutY="175.0" mnemonicParsing="false" onAction="#updateAPT" prefHeight="36.0" prefWidth="92.0" style="-fx-background-color: #d35400;" text="UPDATE" textFill="WHITE" />
-            <Button fx:id="delete" layoutX="41.0" layoutY="260.0" mnemonicParsing="false" onAction="#DeleteAPT" prefHeight="36.0" prefWidth="92.0" style="-fx-background-color: #d35400;" text="DELETE" textFill="WHITE" />
+            <Button fx:id="delete" layoutX="42.0" layoutY="271.0" mnemonicParsing="false" onAction="#DeleteAPT" prefHeight="36.0" prefWidth="92.0" style="-fx-background-color: #d35400;" text="DELETE" textFill="WHITE" />
          </children>
       </Pane>
-      <Label layoutX="275.0" layoutY="48.0" style="-fx-background-color: black;" text="Appointment Details" textFill="WHITE">
+      <Label layoutX="388.0" layoutY="42.0" style="-fx-background-color: black;" text="Appointment Details" textFill="WHITE">
          <font>
             <Font name="DejaVu Sans Mono Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="44.0" layoutY="134.0" text="ID" textFill="WHITE">
+      <Label layoutX="76.0" layoutY="134.0" text="ID" textFill="WHITE">
          <font>
             <Font name="DejaVu Sans Bold" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="44.0" layoutY="193.0" text="DATE" textFill="WHITE">
+      <Label layoutX="71.0" layoutY="193.0" text="DATE" textFill="WHITE">
          <font>
             <Font name="DejaVu Sans Bold" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="41.0" layoutY="269.0" text="TIME" textFill="WHITE">
+      <Label layoutX="73.0" layoutY="269.0" text="TIME" textFill="WHITE">
          <font>
             <Font name="DejaVu Sans Bold" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="429.0" layoutY="134.0" text="PAY ID" textFill="WHITE">
+      <Label layoutX="591.0" layoutY="129.0" text="PAY ID" textFill="WHITE">
          <font>
             <Font name="DejaVu Sans Bold" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="aptID" layoutX="155.0" layoutY="130.0" prefHeight="36.0" prefWidth="197.0" />
-      <TextField fx:id="date" layoutX="155.0" layoutY="189.0" prefHeight="36.0" prefWidth="197.0" />
-      <TextField fx:id="time" layoutX="155.0" layoutY="264.0" prefHeight="36.0" prefWidth="197.0" />
-      <ComboBox fx:id="payID" editable="true" layoutX="560.0" layoutY="130.0" prefWidth="150.0" promptText="select a pet id" />
-      <TableView fx:id="table" layoutY="399.0" onMouseClicked="#tableactionMOuse" prefHeight="470.0" prefWidth="893.0" style="-fx-background-color: #f39c12;">
+      <TextField fx:id="aptID" layoutX="220.0" layoutY="129.0" prefHeight="36.0" prefWidth="255.0" />
+      <TextField fx:id="date" layoutX="220.0" layoutY="188.0" prefHeight="36.0" prefWidth="255.0" />
+      <TextField fx:id="time" layoutX="220.0" layoutY="264.0" prefHeight="36.0" prefWidth="255.0" />
+      <ComboBox fx:id="payID" editable="true" layoutX="771.0" layoutY="130.0" prefWidth="150.0" promptText="select a pet id" />
+      <TableView fx:id="table" layoutY="430.0" onMouseClicked="#tableactionMOuse" opacity="0.86" prefHeight="460.0" prefWidth="1210.0" style="-fx-background-color: #f39c12;">
         <columns>
-          <TableColumn fx:id="tableID" prefWidth="151.0" text="ID"  style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;"/>
-          <TableColumn fx:id="tableDate" prefWidth="220.0" text="DATE" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" />
-            <TableColumn fx:id="tableTime" prefWidth="275.0" text="TIME"  style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;"/>
-            <TableColumn fx:id="tablePayID" prefWidth="246.0" text="PAY ID"  style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;"/>
+          <TableColumn fx:id="tableID" prefWidth="242.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="ID" />
+          <TableColumn fx:id="tableDate" prefWidth="347.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="DATE" />
+            <TableColumn fx:id="tableTime" prefWidth="356.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="TIME" />
+            <TableColumn fx:id="tablePayID" prefWidth="264.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="PAY ID" />
         </columns>
       </TableView>
       <Button fx:id="backID" layoutX="39.0" layoutY="24.0" mnemonicParsing="false" onAction="#backIDAction" style="-fx-background-color: black;" text="Back" textFill="WHITE" underline="true" />

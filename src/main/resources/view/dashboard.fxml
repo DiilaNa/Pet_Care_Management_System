@@ -2,67 +2,95 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="870.0" prefWidth="890.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gdse71.project.animalhospital.Controller.Dashboard">
+<AnchorPane prefHeight="870.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gdse71.project.animalhospital.Controller.Dashboard">
    <children>
-      <ImageView fx:id="image" fitHeight="870.0" fitWidth="890.0" pickOnBounds="true">
+      <ImageView fx:id="image" fitHeight="870.0" fitWidth="1200.0" pickOnBounds="true">
          <image>
             <Image url="@../../../../../../../Pictures/animall%20hosptila/Dashboard.png" />
          </image>
       </ImageView>
-      <Label layoutX="471.0" layoutY="29.0" text="DASH BOARD">
+      <Label layoutX="594.0" layoutY="35.0" text="DASH BOARD">
          <font>
             <Font name="System Bold" size="43.0" />
          </font>
       </Label>
-      <Button fx:id="pet" layoutX="274.0" layoutY="172.0" mnemonicParsing="false" onAction="#petbtn" prefHeight="54.0" prefWidth="271.0" style="-fx-background-radius: 15; -fx-background-color: #d35400;" text="PET DETAILS" textFill="WHITE">
+      <Button fx:id="pet" alignment="CENTER" layoutX="429.0" layoutY="178.0" mnemonicParsing="false" onAction="#petbtn" prefHeight="54.0" prefWidth="271.0" style="-fx-background-radius: 15; -fx-background-color: #d35400;" text="PET DETAILS" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
+         <effect>
+            <InnerShadow choke="0.21" height="0.0" radius="5.43" width="23.72" />
+         </effect>
       </Button>
-      <Button fx:id="appointments" layoutX="274.0" layoutY="299.0" mnemonicParsing="false" onAction="#appointmentsbtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="APPOINTMENTS" textFill="WHITE">
+      <Button fx:id="appointments" alignment="CENTER" layoutX="430.0" layoutY="299.0" mnemonicParsing="false" onAction="#appointmentsbtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="APPOINTMENTS" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
-      <Button fx:id="emp" layoutX="274.0" layoutY="421.0" mnemonicParsing="false" onAction="#empbtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="EMPLOYEE" textFill="WHITE">
+      <Button fx:id="emp" alignment="CENTER" layoutX="430.0" layoutY="435.0" mnemonicParsing="false" onAction="#empbtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="EMPLOYEE" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
-      <Button fx:id="invent" layoutX="608.0" layoutY="421.0" mnemonicParsing="false" onAction="#inventorybtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="INVENTORY" textFill="WHITE">
+      <Button fx:id="invent" alignment="CENTER" layoutX="776.0" layoutY="435.0" mnemonicParsing="false" onAction="#inventorybtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="INVENTORY" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
-      <Button fx:id="owner" layoutX="608.0" layoutY="178.0" mnemonicParsing="false" onAction="#ownerbtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-radius: 15; -fx-background-color: #d35400;" text="OWNER DETAILS" textFill="WHITE">
+      <Button fx:id="owner" alignment="CENTER" layoutX="776.0" layoutY="178.0" mnemonicParsing="false" onAction="#ownerbtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-radius: 15; -fx-background-color: #d35400;" text="OWNER DETAILS" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
-      <Button fx:id="service" layoutX="608.0" layoutY="299.0" mnemonicParsing="false" onAction="#servicebtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-radius: 15; -fx-background-color: #d35400;" text="SERVICE DETAILS" textFill="WHITE">
+      <Button fx:id="service" alignment="CENTER" layoutX="776.0" layoutY="307.0" mnemonicParsing="false" onAction="#servicebtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-radius: 15; -fx-background-color: #d35400;" text="SERVICE DETAILS" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
-      <Button fx:id="sal" layoutX="284.0" layoutY="559.0" mnemonicParsing="false" onAction="#salarybtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="SALARY" textFill="WHITE">
+      <Button fx:id="sal" alignment="CENTER" layoutX="430.0" layoutY="563.0" mnemonicParsing="false" onAction="#salarybtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="SALARY" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
-      <Button fx:id="paymnt" layoutX="602.0" layoutY="559.0" mnemonicParsing="false" onAction="#paymentsbtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="PAYMENTS" textFill="WHITE">
+      <Button fx:id="paymnt" alignment="CENTER" layoutX="766.0" layoutY="563.0" mnemonicParsing="false" onAction="#paymentsbtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="PAYMENTS" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
-      <Button fx:id="extrsbtn" layoutX="284.0" layoutY="675.0" mnemonicParsing="false" onAction="#extrsbtnAction" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="Payments" textFill="WHITE">
+      <Button fx:id="extrsbtn" alignment="CENTER" layoutX="430.0" layoutY="702.0" mnemonicParsing="false" onAction="#extrsbtnAction" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="Payments" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
    </children>
 </AnchorPane>
