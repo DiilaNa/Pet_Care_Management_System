@@ -15,7 +15,7 @@
    <children>
       <ImageView fx:id="imagefromscenebuilderID" fitHeight="924.0" fitWidth="837.0" layoutX="364.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../../Pictures/animall%20hosptila/owner%20pic.jpeg" />
+            <Image url="@../../../../../../../Pictures/animall hosptila/owner.jpeg" />
          </image>
       </ImageView>
       <Pane prefHeight="900.0" prefWidth="364.0" style="-fx-background-color: black;">

@@ -15,7 +15,7 @@
    <children>
       <ImageView fx:id="image" fitHeight="900.0" fitWidth="1200.0" opacity="0.9" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../../Pictures/animall%20hosptila/petrecord.jpeg" />
+            <Image url="@../../../../../../../Pictures/animall hosptila/petrecord.jpeg" />
          </image>
       </ImageView>
       <Label layoutX="450.0" layoutY="41.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="51.0" prefWidth="409.0" style="-fx-background-color: black;" text="PET HEALTH RECORDS" textFill="WHITE">

@@ -73,7 +73,7 @@ public class OwnerController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Image loginImage = new Image(getClass().getResourceAsStream("/images/owner pic.jpeg"));
+        Image loginImage = new Image(getClass().getResourceAsStream("/images/owner.jpeg"));
         imagefromscenebuilderID.setImage(loginImage);
 
         tableownerID.setCellValueFactory(new PropertyValueFactory<>("ownerId"));

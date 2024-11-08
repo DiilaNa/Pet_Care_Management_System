@@ -14,7 +14,7 @@
    <children>
       <ImageView fx:id="image" fitHeight="879.0" fitWidth="1227.0" layoutX="-21.0" layoutY="-8.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../../Pictures/animall%20hosptila/Employee.jpeg" />
+            <Image url="@../../../../../../../Pictures/animall hosptila/Employee.jpeg" />
          </image>
       </ImageView>
       <Button fx:id="save" layoutX="30.0" layoutY="136.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="44.0" prefWidth="114.0" style="-fx-background-color: #d35400; -fx-background-radius: 12;" text="SAVE" textFill="WHITE">

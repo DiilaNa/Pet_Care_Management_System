@@ -13,7 +13,7 @@
    <children>
       <ImageView fx:id="image" fitHeight="880.0" fitWidth="1200.0" layoutY="-10.0" pickOnBounds="true" style="\\: true;">
          <image>
-            <Image url="@../../../../../../../Pictures/animall%20hosptila/login.png" />
+            <Image url="@../../../../../../../Pictures/animall hosptila/login.png" />
          </image>
       </ImageView>
       <Label layoutX="323.0" layoutY="31.0" prefHeight="109.0" prefWidth="682.0" text="PETS &amp; VETS ANIMAL HOSPITAL">
