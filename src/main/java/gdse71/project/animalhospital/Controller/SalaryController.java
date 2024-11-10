@@ -271,7 +271,12 @@ public class SalaryController implements Initializable {
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                 Date date = formatter.parse(dateText);
 
-                Salarydto salarydto = new Salarydto(salaryId, date, amount, employeeId);
+                Salarydto salarydto = new Salarydto(
+                        salaryId,
+                        date,
+                        amount,
+                        employeeId
+                );
 
                 boolean isSaved = salaryModel.update(salarydto);
                 if (isSaved) {

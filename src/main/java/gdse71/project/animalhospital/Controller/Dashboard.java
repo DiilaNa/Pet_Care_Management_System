@@ -4,7 +4,6 @@ package gdse71.project.animalhospital.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -14,15 +13,8 @@ import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class Dashboard implements Initializable {
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        Image loginImage = new Image(getClass().getResourceAsStream("/images/dashboard.png"));
-        image.setImage(loginImage);
-    }
+public class Dashboard {
 
     @FXML
     private Button appointments;
@@ -55,6 +47,14 @@ public class Dashboard implements Initializable {
     @FXML
     private ImageView image;
 
+    @FXML
+    public void initialize() {
+        Image loginImage = new Image(getClass().getResourceAsStream("/images/dashboard.png"));
+        image.setImage(loginImage);
+
+
+
+    }
 
     @FXML
     void appointmentsbtn(ActionEvent event) {
@@ -73,7 +73,7 @@ public class Dashboard implements Initializable {
     @FXML
     void empbtn(ActionEvent event) {
         try {
-            Stage stage = (Stage) emp.getScene().getWindow();
+            Stage stage = (Stage) pet.getScene().getWindow();
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Employee.fxml"))));
             stage.setTitle("Pets & Vets Animal Hospital");
             stage.setResizable(false);
@@ -101,7 +101,7 @@ public class Dashboard implements Initializable {
     @FXML
     void ownerbtn(ActionEvent event) {
         try {
-            Stage stage = (Stage)owner.getScene().getWindow();
+            Stage stage = (Stage) pet.getScene().getWindow();
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Owner.fxml"))));
             stage.setTitle("Pets & Vets Animal Hospital");
             stage.setResizable(false);
@@ -132,7 +132,7 @@ public class Dashboard implements Initializable {
     @FXML
     void salarybtn(ActionEvent event) {
         try {
-            Stage stage = (Stage) sal.getScene().getWindow();
+            Stage stage = (Stage) pet.getScene().getWindow();
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Salary.fxml"))));
             stage.setTitle("Pets & Vets Animal Hospital");
             stage.setResizable(false);

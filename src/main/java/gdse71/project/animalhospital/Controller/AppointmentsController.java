@@ -23,7 +23,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -140,7 +143,7 @@ public class AppointmentsController implements Initializable {
     }
 
     @FXML
-    void saveAPT(ActionEvent event) {
+    void saveAPT(ActionEvent event) throws SQLException, ClassNotFoundException {
             String appointmentID = aptID.getText();
             String appointmentDate = date.getText();
             String appointmentTime = time.getText();
@@ -179,26 +182,33 @@ public class AppointmentsController implements Initializable {
             }
 
             if (isValidID && isValidDate && isValidTime && isValidPayID) {
-                Appointmentsdto appointmentsDto = new Appointmentsdto(
-                        appointmentID,
-                        appointmentDate,
-                        appointmentTime,
-                        paymentID
 
-                );
 
+
+                    Appointmentsdto appointmentsDto = new Appointmentsdto(
+                            appointmentID,
+                            appointmentDate,
+                            appointmentTime,
+                            paymentID
+
+                    );
+
+                boolean isSaved = false;
                 try {
-                    boolean isSaved = appointmentsModel.save(appointmentsDto);
-                    if (isSaved) {
-                        refreshPage();
-                        new Alert(Alert.AlertType.INFORMATION, "Appointment saved successfully!").show();
-                    } else {
-                        new Alert(Alert.AlertType.ERROR, "Failed to save appointment.").show();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    new Alert(Alert.AlertType.ERROR, "An error occurred while saving the appointment.").show();
+                    isSaved = appointmentsModel.save(appointmentsDto);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
                 }
+                if (isSaved) {
+                            refreshPage();
+                            new Alert(Alert.AlertType.INFORMATION, "Appointment saved successfully!").show();
+                        } else {
+                            new Alert(Alert.AlertType.ERROR, "Failed to save appointment.").show();
+                        }
+            }else{
+                new Alert(Alert.AlertType.ERROR, "Invalid appointment ID.").show();
             }
 
 
@@ -211,8 +221,8 @@ public class AppointmentsController implements Initializable {
 
         if (apointmentsTM != null) {
             aptID.setText(apointmentsTM.getAptID());
-            date.setText(apointmentsTM.getAptDate());
-            time.setText(apointmentsTM.getAptTime());
+            date.setText(String.valueOf(apointmentsTM.getAptDate()));
+            time.setText(String.valueOf(apointmentsTM.getAptTime()));
             payID.setValue(apointmentsTM.getPayID());
 
             save.setDisable(false);
@@ -264,6 +274,7 @@ public class AppointmentsController implements Initializable {
         }
 
         if (isValidID && isValidDate && isValidTime && isValidPayID) {
+
             Appointmentsdto appointmentsDto = new Appointmentsdto(
                     appointmentID,
                     appointmentDate,

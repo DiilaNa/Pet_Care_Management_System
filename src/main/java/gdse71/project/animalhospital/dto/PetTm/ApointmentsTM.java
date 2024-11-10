@@ -2,6 +2,9 @@ package gdse71.project.animalhospital.dto.PetTm;
 
 import lombok.*;
 
+import java.sql.Time;
+import java.util.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
