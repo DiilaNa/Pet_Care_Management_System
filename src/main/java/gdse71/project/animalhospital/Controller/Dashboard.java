@@ -59,7 +59,7 @@ public class Dashboard {
     @FXML
     void appointmentsbtn(ActionEvent event) {
         try {
-            Stage stage = (Stage) pet.getScene().getWindow();
+            Stage stage = (Stage) appointments.getScene().getWindow();
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Appointments.fxml"))));
             stage.setTitle("Pets & Vets Animal Hospital");
             stage.setResizable(false);
@@ -73,7 +73,7 @@ public class Dashboard {
     @FXML
     void empbtn(ActionEvent event) {
         try {
-            Stage stage = (Stage) pet.getScene().getWindow();
+            Stage stage = (Stage) emp.getScene().getWindow();
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Employee.fxml"))));
             stage.setTitle("Pets & Vets Animal Hospital");
             stage.setResizable(false);
@@ -87,7 +87,7 @@ public class Dashboard {
     @FXML
     void inventorybtn(ActionEvent event) { //this is medicine button in dashboard
         try {
-            Stage stage = (Stage) pet.getScene().getWindow();
+            Stage stage = (Stage) invent.getScene().getWindow();
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Medicine.fxml"))));
             stage.setTitle("Pets & Vets Animal Hospital");
             stage.setResizable(false);
@@ -101,7 +101,7 @@ public class Dashboard {
     @FXML
     void ownerbtn(ActionEvent event) {
         try {
-            Stage stage = (Stage) pet.getScene().getWindow();
+            Stage stage = (Stage)owner.getScene().getWindow();
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Owner.fxml"))));
             stage.setTitle("Pets & Vets Animal Hospital");
             stage.setResizable(false);
@@ -131,13 +131,22 @@ public class Dashboard {
 
     @FXML
     void salarybtn(ActionEvent event) {
+        try {
+            Stage stage = (Stage) sal.getScene().getWindow();
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Salary.fxml"))));
+            stage.setTitle("Pets & Vets Animal Hospital");
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
     @FXML
     void servicebtn(ActionEvent event){
         try {
-            Stage stage = (Stage) pet.getScene().getWindow();
+            Stage stage = (Stage) service.getScene().getWindow();
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/service.fxml"))));
             stage.setTitle("Pets & Vets Animal Hospital");
             stage.setResizable(false);

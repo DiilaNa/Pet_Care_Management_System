@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="900.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gdse71.project.animalhospital.Controller.SalaryController">
+   <children>
+      <ImageView fx:id="image" fitHeight="900.0" fitWidth="1200.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../../../../Pictures/animall hosptila/salar.jpeg" />
+         </image>
+      </ImageView>
+      <Label layoutX="175.0" layoutY="138.0" text="SALARY ID" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="174.0" layoutY="274.0" text="AMOUNT" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="176.0" layoutY="205.0" text="DATE" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="174.0" layoutY="338.0" text="EMPLOYEE ID" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="430.0" layoutY="33.0" text="SALARY DETAILS" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Bold" size="36.0" />
+         </font>
+      </Label>
+      <TextField fx:id="salaryID" layoutX="393.0" layoutY="138.0" prefHeight="31.0" prefWidth="246.0" />
+      <TextField fx:id="SalDate" layoutX="393.0" layoutY="200.0" prefHeight="31.0" prefWidth="246.0" />
+      <TextField fx:id="SalAmount" layoutX="399.0" layoutY="274.0" prefHeight="31.0" prefWidth="246.0" />
+      <Button fx:id="save" layoutX="950.0" layoutY="126.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="40.0" prefWidth="123.0" style="-fx-background-radius: 12; -fx-background-color: d35400;" text="SAVE" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="update" layoutX="950.0" layoutY="216.0" mnemonicParsing="false" onAction="#updateAction" style="-fx-background-radius: 12; -fx-background-color: d35400;" text="UPDATE" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="delete" layoutX="950.0" layoutY="298.0" mnemonicParsing="false" onAction="#deleteAction" style="-fx-background-radius: 12; -fx-background-color: d35400;" text="DELETE" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="back" layoutX="41.0" layoutY="25.0" mnemonicParsing="false" onAction="#backAction" prefHeight="20.0" prefWidth="52.0" style="-fx-background-radius: 12;" text="BACK" underline="true">
+         <font>
+            <Font name="DejaVu Sans Bold" size="10.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="SalEmpId" editable="true" layoutX="399.0" layoutY="342.0" prefHeight="31.0" prefWidth="246.0" promptText="select an Employee ID" />
+      <TableView fx:id="table" layoutY="450.0" onMouseClicked="#tableClick" opacity="0.87" prefHeight="449.0" prefWidth="1200.0" style="-fx-background-color: f39c12;">
+        <columns>
+          <TableColumn fx:id="tableSalaryId" prefWidth="282.0" text="SALARY ID"  style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;"/>
+          <TableColumn fx:id="tableSalaryDate" prefWidth="241.0" text="DATE"  style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;"/>
+            <TableColumn fx:id="tableSalaryAmount" prefWidth="349.0" text="AMOUNT"  style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;"/>
+            <TableColumn fx:id="tableSalaryEmployeeId" prefWidth="323.0" text="EMPLOYEE ID"  style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;"/>
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

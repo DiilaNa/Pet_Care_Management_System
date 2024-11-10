@@ -1,10 +1,7 @@
 package gdse71.project.animalhospital.Controller;
 
 import gdse71.project.animalhospital.dto.Appointmentsdto;
-import gdse71.project.animalhospital.dto.PetRecorddto;
 import gdse71.project.animalhospital.dto.PetTm.ApointmentsTM;
-import gdse71.project.animalhospital.dto.PetTm.OwnerTM;
-import gdse71.project.animalhospital.dto.PetTm.PetRecordTM;
 import gdse71.project.animalhospital.model.AppointmentsModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -187,6 +184,7 @@ public class AppointmentsController implements Initializable {
                         appointmentDate,
                         appointmentTime,
                         paymentID
+
                 );
 
                 try {
@@ -271,6 +269,8 @@ public class AppointmentsController implements Initializable {
                     appointmentDate,
                     appointmentTime,
                     paymentID
+
+
             );
 
             try {

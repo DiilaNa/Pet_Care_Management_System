@@ -20,7 +20,7 @@
             <Font name="System Bold" size="43.0" />
          </font>
       </Label>
-      <Button fx:id="pet" alignment="CENTER" layoutX="429.0" layoutY="178.0" mnemonicParsing="false" onAction="#petbtn" prefHeight="54.0" prefWidth="271.0" style="-fx-background-radius: 15; -fx-background-color: #d35400;" text="PET DETAILS" textFill="WHITE">
+      <Button fx:id="pet" alignment="CENTER" layoutX="439.0" layoutY="307.0" mnemonicParsing="false" onAction="#petbtn" prefHeight="54.0" prefWidth="271.0" style="-fx-background-radius: 15; -fx-background-color: #d35400;" text="PET DETAILS" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
@@ -28,7 +28,7 @@
             <InnerShadow choke="0.21" height="0.0" radius="5.43" width="23.72" />
          </effect>
       </Button>
-      <Button fx:id="appointments" alignment="CENTER" layoutX="430.0" layoutY="299.0" mnemonicParsing="false" onAction="#appointmentsbtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="APPOINTMENTS" textFill="WHITE">
+      <Button fx:id="appointments" alignment="CENTER" layoutX="440.0" layoutY="178.0" mnemonicParsing="false" onAction="#appointmentsbtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="APPOINTMENTS" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font>

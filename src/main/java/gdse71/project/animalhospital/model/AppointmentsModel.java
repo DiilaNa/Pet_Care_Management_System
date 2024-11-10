@@ -4,13 +4,14 @@ import gdse71.project.animalhospital.CrudUtil.Util;
 import gdse71.project.animalhospital.dto.Appointmentsdto;
 import gdse71.project.animalhospital.dto.PetRecorddto;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AppointmentsModel {
     public ArrayList<Appointmentsdto> getAll() throws SQLException, ClassNotFoundException {
-        ResultSet rst =  Util.execute("select * from appointments");
+        ResultSet rst =  Util.execute("SELECT * from appointments");
 
         ArrayList<Appointmentsdto> appointmentsdtos = new ArrayList<>();
 
@@ -21,6 +22,7 @@ public class AppointmentsModel {
                     rst.getString(3),
                     rst.getString(4)
 
+
             );
             appointmentsdtos.add(appointmentsdto);
         }
@@ -28,13 +30,13 @@ public class AppointmentsModel {
     }
     public boolean save(Appointmentsdto appointmentsdto) throws SQLException, ClassNotFoundException {
         return Util.execute(
-                "insert into appointments values (?,?,?,?)",
+                "INSERT INTO appointments VALUES (?,?,?,?)",
                 appointmentsdto.getAptID(),
                 appointmentsdto.getAptDate(),
                 appointmentsdto.getAptTime(),
                 appointmentsdto.getPayID()
-
         );
+
     }
     public boolean update(Appointmentsdto appointmentsdto) throws SQLException, ClassNotFoundException {
         return Util.execute(
