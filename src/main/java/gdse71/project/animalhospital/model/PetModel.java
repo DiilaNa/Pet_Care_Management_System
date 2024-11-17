@@ -30,12 +30,11 @@ public class PetModel {
     public boolean savePet(Petdto petdto) {
         try {
             return Util.execute(
-                    "insert into pet values (?,?,?,?,?)",
+                    "insert into pet values (?,?,?,?)",
                     petdto.getPetId(),
                     petdto.getPetName(),
                     petdto.getPetBreed(),
-                    petdto.getPetOwnerId(),
-                    petdto.getPetAppId()
+                    petdto.getPetOwnerId()
             );
         } catch (SQLException e) {
             e.printStackTrace();  // Print stack trace for better debugging
@@ -48,8 +47,7 @@ public class PetModel {
     public boolean updatePet(Petdto petdto) {
         try {
             return Util.execute(
-                    "update pet set  appointmentsid=?, pet_name=?, breed=?, ownerid=? where pet_id=?",
-                    petdto.getPetAppId(),
+                    "update pet set pet_name=?, breed=?, ownerid=? where pet_id=?",
                     petdto.getPetName(),
                     petdto.getPetBreed(),
                     petdto.getPetOwnerId(),

@@ -6,10 +6,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -40,12 +38,48 @@ public class Dashboard {
     @FXML
     private Button service;
 
+
     @FXML
-    private Button extrsbtn;
+    private Button Invoice;
+
+    @FXML
+    private Button Shedule;
+
+    @FXML
+    private Button SmS;
+
+    @FXML
+    private Button extrsbtn111;
 
 
     @FXML
     private ImageView image;
+
+
+    @FXML
+    void SMSAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void ShedulebtnAction(ActionEvent event) {
+
+    }
+
+
+    @FXML
+    void invoiceAction(ActionEvent event) {
+        try {
+            Stage stage = (Stage) Invoice.getScene().getWindow();
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Invoice.fxml"))));
+            stage.setTitle("Pets & Vets Animal Hospital");
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
     @FXML
     public void initialize() {
@@ -115,7 +149,7 @@ public class Dashboard {
     void paymentsbtn(ActionEvent event) {
         try {
             Stage stage = (Stage) paymnt.getScene().getWindow();
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PaymentInvoice.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Payment.fxml"))));
             stage.setTitle("Pets & Vets Animal Hospital");
             stage.setResizable(false);
             stage.show();

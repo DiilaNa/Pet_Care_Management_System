@@ -1,7 +1,5 @@
 package gdse71.project.animalhospital.Controller;
 
-import gdse71.project.animalhospital.dto.PetRecorddto;
-import gdse71.project.animalhospital.dto.PetTm.PetRecordTM;
 import gdse71.project.animalhospital.dto.PetTm.ServiceTM;
 import gdse71.project.animalhospital.dto.Servicedto;
 import gdse71.project.animalhospital.model.ServiceModel;

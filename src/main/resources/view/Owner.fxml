@@ -13,41 +13,40 @@
 
 <AnchorPane prefHeight="928.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gdse71.project.animalhospital.Controller.OwnerController">
    <children>
-      <ImageView fx:id="imagefromscenebuilderID" fitHeight="924.0" fitWidth="837.0" layoutX="364.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
+      <ImageView fx:id="imagefromscenebuilderID" fitHeight="928.0" fitWidth="897.0" layoutY="-2.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../../Pictures/animall hosptila/owner.jpeg" />
+            <Image url="@../../../../../../../Pictures/animall hosptila/ALL PET.png" />
          </image>
       </ImageView>
-      <Pane prefHeight="900.0" prefWidth="364.0" style="-fx-background-color: black;">
+      <Pane layoutX="898.0" prefHeight="928.0" prefWidth="304.0" style="-fx-background-color: black;">
          <children>
-            <Button fx:id="backbtn" layoutX="30.0" layoutY="29.0" mnemonicParsing="false" onAction="#backbtnAction" style="-fx-background-color: white;" text="BACK" />
-            <Button fx:id="savebtn" layoutX="116.0" layoutY="155.0" mnemonicParsing="false" onAction="#savebtnAction" prefHeight="46.0" prefWidth="147.0" style="-fx-background-radius: 25; -fx-background-color: #d35400;" text="SAVE" textFill="WHITE">
+            <Button fx:id="savebtn" layoutX="64.0" layoutY="140.0" mnemonicParsing="false" onAction="#savebtnAction" prefHeight="46.0" prefWidth="147.0" style="-fx-background-radius: 25; -fx-background-color: #d35400;" text="SAVE" textFill="WHITE">
                <font>
                   <Font name="Dyuthi Regular" size="22.0" />
                </font>
             </Button>
-            <Button fx:id="updatebtn" layoutX="109.0" layoutY="246.0" mnemonicParsing="false" onAction="#updatebtnAction" prefHeight="54.0" prefWidth="147.0" style="-fx-background-radius: 25; -fx-background-color: #d35400;" text="UPDATE" textFill="#f2ebeb">
+            <Button fx:id="updatebtn" layoutX="64.0" layoutY="233.0" mnemonicParsing="false" onAction="#updatebtnAction" prefHeight="54.0" prefWidth="147.0" style="-fx-background-radius: 25; -fx-background-color: #d35400;" text="UPDATE" textFill="#f2ebeb">
                <font>
                   <Font name="Dyuthi Regular" size="23.0" />
                </font>
             </Button>
-            <Button fx:id="deletebtn" layoutX="116.0" layoutY="360.0" mnemonicParsing="false" onAction="#deletebtnAction" prefHeight="52.0" prefWidth="147.0" style="-fx-background-radius: 25; -fx-background-color: #d35400;" text="DELETE" textFill="#e8e4e4">
+            <Button fx:id="deletebtn" layoutX="64.0" layoutY="344.0" mnemonicParsing="false" onAction="#deletebtnAction" prefHeight="52.0" prefWidth="147.0" style="-fx-background-radius: 25; -fx-background-color: #d35400;" text="DELETE" textFill="#e8e4e4">
                <font>
                   <Font name="Dyuthi Regular" size="22.0" />
                </font>
             </Button>
          </children>
       </Pane>
-      <Label layoutX="414.0" layoutY="35.0" style="-fx-background-color: black;" text="OWNER DETAILS" textFill="WHITE">
+      <Label layoutX="256.0" layoutY="50.0" text="OWNER DETAILS">
          <font>
             <Font name="DejaVu Sans Bold" size="56.0" />
          </font>
       </Label>
-      <TextField fx:id="ownerID" layoutX="650.0" layoutY="185.0" prefHeight="33.0" prefWidth="226.0" />
-      <TextField fx:id="name" layoutX="650.0" layoutY="247.0" prefHeight="33.0" prefWidth="226.0" />
-      <TextField fx:id="address" layoutX="650.0" layoutY="320.0" prefHeight="33.0" prefWidth="226.0" />
-      <TextField fx:id="mail" layoutX="650.0" layoutY="385.0" prefHeight="33.0" prefWidth="226.0" />
-      <TableView fx:id="table" layoutY="494.0" onMouseClicked="#TABLEACTION" opacity="0.91" prefHeight="434.0" prefWidth="1201.0" style="-fx-background-color: #f39c12;">
+      <TextField fx:id="ownerID" layoutX="424.0" layoutY="189.0" prefHeight="33.0" prefWidth="226.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="name" layoutX="424.0" layoutY="260.0" prefHeight="33.0" prefWidth="226.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="address" layoutX="424.0" layoutY="329.0" prefHeight="33.0" prefWidth="226.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="mail" layoutX="424.0" layoutY="394.0" prefHeight="33.0" prefWidth="226.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1px 0;" />
+      <TableView fx:id="table" layoutY="494.0" onMouseClicked="#TABLEACTION" opacity="0.91" prefHeight="434.0" prefWidth="1202.0" style="-fx-background-color: #f39c12;">
         <columns>
           <TableColumn fx:id="tableownerID" prefWidth="330.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="OWNER ID" />
           <TableColumn fx:id="tableOname" prefWidth="255.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="OWNER NAME" />
@@ -55,25 +54,26 @@
             <TableColumn fx:id="tableOmail" prefWidth="268.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="E-MAIL" />
         </columns>
       </TableView>
-      <Label layoutX="409.0" layoutY="324.0" style="-fx-background-color: black;" text="ADDRESS" textFill="WHITE">
+      <Label layoutX="196.0" layoutY="333.0" text="ADDRESS">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="403.0" layoutY="389.0" style="-fx-background-color: black;" text="EMAIL" textFill="WHITE">
+      <Label layoutX="199.0" layoutY="398.0" text="EMAIL">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="414.0" layoutY="189.0" prefHeight="24.0" prefWidth="141.0" style="-fx-background-color: black;" text="OWNER ID" textFill="WHITE">
+      <Label layoutX="196.0" layoutY="193.0" prefHeight="24.0" prefWidth="141.0" text="OWNER ID">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="414.0" layoutY="251.0" style="-fx-background-color: black;" text="NAME" textFill="WHITE">
+      <Label layoutX="196.0" layoutY="264.0" text="NAME">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
+      <Button fx:id="backbtn" layoutX="36.0" layoutY="29.0" mnemonicParsing="false" onAction="#backbtnAction" style="-fx-background-color: white;" text="BACK" />
    </children>
 </AnchorPane>

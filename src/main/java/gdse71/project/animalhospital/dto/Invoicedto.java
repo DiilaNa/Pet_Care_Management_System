@@ -8,12 +8,9 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class PaymentInvoicedto {
-    private String paymentId;
-    private String paymentDate;
-    private String paymentMethod;
+public class Invoicedto {
     private String InvoiceNo;
     private String InvoiceName;
     private Double InvoiceAmount;
-    //private String payID;
+    private String Paymntid;
 }

@@ -36,7 +36,7 @@
             <InnerShadow />
          </effect>
       </Button>
-      <Button fx:id="emp" alignment="CENTER" layoutX="430.0" layoutY="435.0" mnemonicParsing="false" onAction="#empbtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="EMPLOYEE" textFill="WHITE">
+      <Button fx:id="emp" alignment="CENTER" layoutX="430.0" layoutY="426.0" mnemonicParsing="false" onAction="#empbtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="EMPLOYEE" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font>
@@ -44,7 +44,7 @@
             <InnerShadow />
          </effect>
       </Button>
-      <Button fx:id="invent" alignment="CENTER" layoutX="776.0" layoutY="435.0" mnemonicParsing="false" onAction="#inventorybtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="INVENTORY" textFill="WHITE">
+      <Button fx:id="invent" alignment="CENTER" layoutX="776.0" layoutY="426.0" mnemonicParsing="false" onAction="#inventorybtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="INVENTORY" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font>
@@ -68,7 +68,7 @@
             <InnerShadow />
          </effect>
       </Button>
-      <Button fx:id="sal" alignment="CENTER" layoutX="430.0" layoutY="563.0" mnemonicParsing="false" onAction="#salarybtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="SALARY" textFill="WHITE">
+      <Button fx:id="sal" alignment="CENTER" layoutX="430.0" layoutY="541.0" mnemonicParsing="false" onAction="#salarybtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="SALARY" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font>
@@ -76,7 +76,7 @@
             <InnerShadow />
          </effect>
       </Button>
-      <Button fx:id="paymnt" alignment="CENTER" layoutX="766.0" layoutY="563.0" mnemonicParsing="false" onAction="#paymentsbtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="PAYMENTS" textFill="WHITE">
+      <Button fx:id="paymnt" alignment="CENTER" layoutX="776.0" layoutY="541.0" mnemonicParsing="false" onAction="#paymentsbtn" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="PAYMENTS" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font>
@@ -84,7 +84,31 @@
             <InnerShadow />
          </effect>
       </Button>
-      <Button fx:id="extrsbtn" alignment="CENTER" layoutX="430.0" layoutY="702.0" mnemonicParsing="false" onAction="#extrsbtnAction" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="Payments" textFill="WHITE">
+      <Button fx:id="Invoice" alignment="CENTER" layoutX="430.0" layoutY="661.0" mnemonicParsing="false" onAction="#invoiceAction" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="INVOICE" textFill="WHITE">
+         <font>
+            <Font size="23.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Button>
+      <Button fx:id="SmS" alignment="CENTER" layoutX="776.0" layoutY="661.0" mnemonicParsing="false" onAction="#SMSAction" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="SMS SENDER" textFill="WHITE">
+         <font>
+            <Font size="23.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Button>
+      <Button fx:id="Shedule" alignment="CENTER" layoutX="430.0" layoutY="774.0" mnemonicParsing="false" onAction="#ShedulebtnAction" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="SHEDULE" textFill="WHITE">
+         <font>
+            <Font size="23.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Button>
+      <Button fx:id="extrsbtn111" alignment="CENTER" layoutX="776.0" layoutY="774.0" mnemonicParsing="false" onAction="#extrsbtnAction" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="Payments" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font>

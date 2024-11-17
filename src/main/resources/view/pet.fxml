@@ -19,62 +19,58 @@
             <Image url="@../../../../../../../Pictures/animall hosptila/pet.png" />
          </image>
       </ImageView>
-      <Label layoutX="58.0" layoutY="148.0" text="Pet ID">
+      <Label layoutX="58.0" layoutY="148.0" text="PET ID">
          <font>
-            <Font size="32.0" />
+            <Font name="DejaVu Sans Bold" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="58.0" layoutY="208.0" text="Pet Name">
+      <Label layoutX="58.0" layoutY="208.0" text="PET NAME">
          <font>
-            <Font size="32.0" />
+            <Font name="DejaVu Sans Bold" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="58.0" layoutY="263.0" text="Breed">
+      <Label layoutX="58.0" layoutY="263.0" text="BREED">
          <font>
-            <Font size="32.0" />
+            <Font name="DejaVu Sans Bold" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="645.0" layoutY="163.0" text="Owner ID">
+      <Label layoutX="645.0" layoutY="163.0" text="OWNER ID">
          <font>
-            <Font size="32.0" />
+            <Font name="DejaVu Sans Bold" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="645.0" layoutY="243.0" text="Appintment ID">
-         <font>
-            <Font size="32.0" />
-         </font>
-      </Label>
-      <TextField fx:id="petID" layoutX="225.0" layoutY="154.0" prefHeight="29.0" prefWidth="267.0" />
-      <TextField fx:id="pname" layoutX="225.0" layoutY="211.0" prefHeight="29.0" prefWidth="267.0" />
-      <Button fx:id="gr" layoutX="82.0" layoutY="362.0" mnemonicParsing="false" onAction="#genReport" prefHeight="40.0" prefWidth="267.0" style="-fx-background-radius: 15; -fx-background-color: #d35400;" text="VIEW  PET REPCORDS" textFill="WHITE">
+      <TextField fx:id="petID" layoutX="225.0" layoutY="154.0" prefHeight="29.0" prefWidth="267.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;" />
+      <TextField fx:id="pname" layoutX="225.0" layoutY="211.0" prefHeight="29.0" prefWidth="267.0" style="-fx-background-color: trsnsparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;" />
+      <Button fx:id="gr" layoutX="82.0" layoutY="402.0" mnemonicParsing="false" onAction="#genReport" prefHeight="40.0" prefWidth="267.0" style="-fx-background-radius: 15; -fx-background-color: #d35400;" text="VIEW  PET REPCORDS" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font></Button>
-      <Button fx:id="update" layoutX="437.0" layoutY="362.0" mnemonicParsing="false" onAction="#updateAction" prefHeight="40.0" prefWidth="114.0" style="-fx-background-radius: 15; -fx-background-color: #d35400;" text="UPDATE" textFill="WHITE">
+      <Button fx:id="update" layoutX="435.0" layoutY="402.0" mnemonicParsing="false" onAction="#updateAction" prefHeight="40.0" prefWidth="114.0" style="-fx-background-radius: 15; -fx-background-color: #d35400;" text="UPDATE" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font></Button>
-      <Button fx:id="delete" layoutX="622.0" layoutY="362.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="40.0" prefWidth="133.0" style="-fx-background-radius: 15; -fx-background-color: #d35400;" text="DELETE" textFill="WHITE">
-         <font>
-            <Font size="21.0" />
-         </font></Button>
-      <Button fx:id="save" layoutX="816.0" layoutY="362.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="40.0" prefWidth="125.0" style="-fx-background-radius: 15; -fx-background-color: #d35400;" text="SAVE" textFill="WHITE">
+      <Button fx:id="delete" layoutX="622.0" layoutY="402.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="40.0" prefWidth="133.0" style="-fx-background-radius: 15; -fx-background-color: #d35400;" text="DELETE" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font></Button>
       <Button fx:id="backID" layoutX="8.0" layoutY="22.0" mnemonicParsing="false" onAction="#backIDAction" style="-fx-background-color: black;" text="Back" textFill="WHITE" underline="true" />
-      <TextField fx:id="breedtxt" layoutX="225.0" layoutY="263.0" prefHeight="29.0" prefWidth="267.0" />
+      <TextField fx:id="breedtxt" layoutX="225.0" layoutY="264.0" prefHeight="29.0" prefWidth="267.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;" />
       <TabPane layoutX="14.0" layoutY="369.0" />
-      <TableView fx:id="table" layoutX="-1.0" layoutY="451.0" onMouseClicked="#ONmouseClicked" opacity="0.81" prefHeight="446.0" prefWidth="1200.0" style="-fx-background-color: #f39c12;">
+      <TableView fx:id="table" layoutX="-1.0" layoutY="480.0" onMouseClicked="#ONmouseClicked" opacity="0.81" prefHeight="417.0" prefWidth="1200.0" style="-fx-background-color: #f39c12;">
         <columns>
           <TableColumn fx:id="columnId" prefWidth="215.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="ID" />
-          <TableColumn fx:id="ColoumnName" prefWidth="205.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="NAME" />
-            <TableColumn fx:id="ColoumnBreed" prefWidth="241.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="BREED" />
-            <TableColumn fx:id="ColoumnOwnerId" prefWidth="262.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="OWNER ID" />
-            <TableColumn fx:id="ColumnAppId" prefWidth="270.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="APPOINTMENT ID" />
+          <TableColumn fx:id="ColoumnName" prefWidth="230.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="NAME" />
+            <TableColumn fx:id="tablePetType" prefWidth="246.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="PET TYPE" />
+            <TableColumn fx:id="ColoumnBreed" prefWidth="224.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="BREED" />
+            <TableColumn fx:id="ColoumnOwnerId" prefWidth="357.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="OWNER ID" />
         </columns>
       </TableView>
-      <ComboBox fx:id="ownerIDCmbo" layoutX="940.0" layoutY="169.0" prefHeight="29.0" prefWidth="183.0" promptText="select a owner id" />
-      <ComboBox fx:id="APTID" layoutX="936.0" layoutY="249.0" prefHeight="29.0" prefWidth="190.0" promptText="select a appointment id" />
+      <ComboBox fx:id="ownerIDCmbo" layoutX="940.0" layoutY="169.0" prefHeight="29.0" prefWidth="183.0" promptText="select a owner id" style="-fx-background-color: transparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;" />
+      <Label layoutX="58.0" layoutY="320.0" text="TYPE">
+         <font>
+            <Font name="DejaVu Sans Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField fx:id="petTypeTxt" layoutX="225.0" layoutY="321.0" prefHeight="29.0" prefWidth="267.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;" />
    </children>
 </AnchorPane>

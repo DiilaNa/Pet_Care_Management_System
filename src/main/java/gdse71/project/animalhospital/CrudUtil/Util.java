@@ -33,4 +33,12 @@ public class Util {
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
         return DBConnection.getInstance().getConnection();
     }
+    public static boolean executeWithConnection(Connection conn, String query, String appointmentId) throws SQLException {
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, appointmentId);  // Set the parameter at index 1
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
+        }
+    }
+
 }

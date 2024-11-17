@@ -13,5 +13,5 @@ public class Petdto {
     private String petName;
     private String petBreed;
     private String petOwnerId;
-    private String petAppId;
+    private String PetType;
 }

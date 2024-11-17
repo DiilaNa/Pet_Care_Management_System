@@ -41,9 +41,6 @@ public class Pet  implements Initializable {
     private TableColumn<PetTM, String> ColoumnOwnerId;
 
     @FXML
-    private TableColumn<PetTM, String> ColumnAppId;
-
-    @FXML
     private TableColumn<PetTM, String> columnId;
 
     @FXML
@@ -55,7 +52,6 @@ public class Pet  implements Initializable {
     @FXML
     private TextField breedtxt;
 
-
     @FXML
     private Button delete;
 
@@ -66,16 +62,10 @@ public class Pet  implements Initializable {
     private ImageView image;
 
     @FXML
-    private TextField ownerID;
-
-    @FXML
     private TextField petID;
 
     @FXML
     private TextField pname;
-
-    @FXML
-    private Button save;
 
     @FXML
     private TableView<PetTM> table;
@@ -84,10 +74,13 @@ public class Pet  implements Initializable {
     private Button update;
 
     @FXML
-    private ComboBox<String> APTID;
+    private ComboBox<String> ownerIDCmbo;
 
     @FXML
-    private ComboBox<String> ownerIDCmbo;
+    private TextField petTypeTxt;
+
+    @FXML
+    private TableColumn<PetTM, String> tablePetType;
 
     PetModel petModel = new PetModel();
 
@@ -100,11 +93,10 @@ public class Pet  implements Initializable {
         ColoumnName.setCellValueFactory(new PropertyValueFactory<>("petName"));
         ColoumnBreed.setCellValueFactory(new PropertyValueFactory<>("petBreed"));
         ColoumnOwnerId.setCellValueFactory(new PropertyValueFactory<>("petOwnerId"));
-        ColumnAppId.setCellValueFactory(new PropertyValueFactory<>("petAppId"));
+        tablePetType.setCellValueFactory(new PropertyValueFactory<>("petType"));
 
         try {
             refreshPage();
-            loadAppointmentIDs();
             loadOwnerIDs();
         } catch (Exception e) {
             e.printStackTrace();
@@ -112,15 +104,12 @@ public class Pet  implements Initializable {
         }
     }
     private void refreshPage() throws SQLException, ClassNotFoundException {
-
             loadTableData();
-            save.setDisable(false);
-            update.setDisable(true);
-            delete.setDisable(true);
-
             petID.setText("");
             pname.setText("");
             breedtxt.setText("");
+            petTypeTxt.setText("");
+            ownerIDCmbo.getItems().clear();
 
     }
 
@@ -135,7 +124,7 @@ public class Pet  implements Initializable {
                     petDTO.getPetName(),
                     petDTO.getPetBreed(),
                     petDTO.getPetOwnerId(),
-                    petDTO.getPetAppId()
+                    petDTO.getPetType()
             );
             petTMS.add(petTM);
         }
@@ -151,12 +140,8 @@ public class Pet  implements Initializable {
             pname.setText(petTM.getPetName());
             breedtxt.setText(petTM.getPetBreed());
             ownerIDCmbo.setValue(petTM.getPetOwnerId());
-            APTID.setValue(petTM.getPetAppId());
+            petTypeTxt.setText(petTM.getPetType());
 
-            save.setDisable(false);
-
-            delete.setDisable(false);
-            update.setDisable(false);
         }
 
     }
@@ -207,55 +192,7 @@ public class Pet  implements Initializable {
         }
     }
 
-    @FXML
-    void saveAction(ActionEvent event) throws SQLException, ClassNotFoundException {
-        String petId = petID.getText();
-        String petName = pname.getText();
-        String petBreed = breedtxt.getText();
-        String ownerId = ownerIDCmbo.getValue();
-        String appId = APTID.getValue();
 
-        petID.setStyle(petID.getStyle() + ";-fx-border-color: #7367F0;");
-        pname.setStyle(pname.getStyle() + ";-fx-border-color: #7367F0;");
-        breedtxt.setStyle(breedtxt.getStyle() + ";-fx-border-color: #7367F0;");
-
-
-        String pnamePattern = "^[a-zA-Z0-9, -]+$"; // Matches alphabetic characters and spaces
-        String breedPattern ="^[a-zA-Z0-9, -]+$"; // Assuming breed is also alphabetic characters
-
-
-        boolean isValidName = petName.matches(pnamePattern);
-        boolean isValidBreed = petBreed.matches(breedPattern);
-
-        if (!isValidName) {
-            pname.setStyle(pname.getStyle() + ";-fx-border-color: red;");
-            System.out.println("Invalid name.");
-        }
-
-        if (!isValidBreed) {
-            breedtxt.setStyle(breedtxt.getStyle() + ";-fx-border-color: red;");
-            System.out.println("Invalid breed.");
-        }
-
-        if (isValidName && isValidBreed) {
-            Petdto petdto = new Petdto(
-                    petId,
-                    petName,
-                    petBreed,
-                    ownerId,
-                    appId
-            );
-
-            boolean isSaved = petModel.savePet(petdto);
-            if (isSaved) {
-                refreshPage();
-                new Alert(Alert.AlertType.INFORMATION, "Pet saved...!").show();
-            } else {
-                new Alert(Alert.AlertType.ERROR, "Failed to save Pet...!").show();
-            }
-        }
-
-    }
 
     @FXML
     void updateAction(ActionEvent event) throws SQLException, ClassNotFoundException {
@@ -263,12 +200,12 @@ public class Pet  implements Initializable {
         String petName = pname.getText();
         String petBreed = breedtxt.getText();
         String ownerId = ownerIDCmbo.getValue();
-        String appId = APTID.getValue();
+        String PETtype = petTypeTxt.getText();
 
         petID.setStyle(petID.getStyle() + ";-fx-border-color: #7367F0;");
         pname.setStyle(pname.getStyle() + ";-fx-border-color: #7367F0;");
         breedtxt.setStyle(breedtxt.getStyle() + ";-fx-border-color: #7367F0;");
-
+        petTypeTxt.setStyle(petTypeTxt.getStyle() + ";-fx-border-color: #7367F0;");
 
         String pnamePattern = "^[a-zA-Z0-9-]+$"; // Matches alphabetic characters and spaces
         String breedPattern = "^[a-zA-Z0-9-]+$"; // Assuming breed is also alphabetic characters
@@ -293,7 +230,7 @@ public class Pet  implements Initializable {
                     petName,
                     petBreed,
                     ownerId,
-                    appId
+                    PETtype
             );
 
             boolean isSaved = petModel.updatePet(petdto);
@@ -323,24 +260,4 @@ public class Pet  implements Initializable {
             throw new RuntimeException(e);
         }
     }
-    private void loadAppointmentIDs() throws SQLException {
-        final Connection connection;
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/animal_hospital", "root", "Ijse@1234");
-
-            ResultSet rs = connection.createStatement().executeQuery("SELECT appointment_id FROM appointments");
-            ObservableList<String> data = FXCollections.observableArrayList();
-
-            while (rs.next()) {
-                data.add(rs.getString("appointment_id"));
-            }
-            APTID.setItems(data);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
-
 }

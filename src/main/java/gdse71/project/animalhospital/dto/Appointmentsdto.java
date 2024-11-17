@@ -2,6 +2,8 @@ package gdse71.project.animalhospital.dto;
 
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -13,6 +15,7 @@ import lombok.*;
     private String AptDate;
     private String AptTime;
     private String PayID;
+    private String Pet_ID;
 
 
 }
