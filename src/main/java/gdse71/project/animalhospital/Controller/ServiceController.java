@@ -37,9 +37,6 @@ public class ServiceController implements Initializable {
     private Button backId;
 
     @FXML
-    private TextField cost;
-
-    @FXML
     private Button delete;
 
     @FXML
@@ -58,9 +55,6 @@ public class ServiceController implements Initializable {
     private TableView<ServiceTM> table;
 
     @FXML
-    private TableColumn<ServiceTM, String> tableCost;
-
-    @FXML
     private TableColumn<ServiceTM, String> tableDuration;
 
     @FXML
@@ -71,7 +65,6 @@ public class ServiceController implements Initializable {
 
     @FXML
     private TableColumn<ServiceTM, String> tableServiceName;
-
 
     @FXML
     private Button update;
@@ -88,7 +81,6 @@ public class ServiceController implements Initializable {
 
         tableServiceId.setCellValueFactory(new PropertyValueFactory<>("serviceID"));
         tableServiceName.setCellValueFactory(new PropertyValueFactory<>("serviceName"));
-        tableCost.setCellValueFactory(new PropertyValueFactory<>("cost"));
         tableDuration.setCellValueFactory(new PropertyValueFactory<>("duration"));
         tablePetId.setCellValueFactory(new PropertyValueFactory<>("PetIdService"));
 
@@ -109,7 +101,6 @@ public class ServiceController implements Initializable {
         if (serviceTM != null) {
             serviceID.setText(serviceTM.getServiceID());
             serviceType.setText(serviceTM.getServiceName());
-            cost.setText(String.valueOf(serviceTM.getCost()));
             duration.setText(serviceTM.getDuration());
             PETid.setValue(serviceTM.getPetIdService());
 
@@ -161,14 +152,12 @@ public class ServiceController implements Initializable {
     void saveAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String servId = serviceID.getText();
         String servName = serviceType.getText();
-        double costValue = Double.parseDouble(cost.getText());
         String durationValue = duration.getText();
         String petServiceId = PETid.getValue();
 
         Servicedto servicedto = new Servicedto(
                 servId,
                 servName,
-                costValue,
                 durationValue,
                 petServiceId
         );
@@ -185,14 +174,12 @@ public class ServiceController implements Initializable {
     void updateAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String servId = serviceID.getText();
         String servName = serviceType.getText();
-        double costValue = Double.parseDouble(cost.getText());
         String durationValue = duration.getText();
         String petServiceId = PETid.getValue();
 
         Servicedto servicedto = new Servicedto(
                 servId,
                 servName,
-                costValue,
                 durationValue,
                 petServiceId
         );
@@ -230,7 +217,6 @@ public class ServiceController implements Initializable {
                 ServiceTM serviceTM = new ServiceTM(
                         servicedto.getServiceID(),
                         servicedto.getServiceName(),
-                        servicedto.getCost(),
                         servicedto.getDuration(),
                         servicedto.getPetIdService()
                 );
@@ -255,7 +241,6 @@ public class ServiceController implements Initializable {
 
         serviceID.setText("");
         serviceType.setText("");
-        cost.setText("");
         duration.setText("");
 
     }

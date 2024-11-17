@@ -21,6 +21,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -35,9 +38,7 @@ public class MedicineController implements Initializable {
         tableMedNAme.setCellValueFactory(new PropertyValueFactory<>("MedicineName"));
         tableCondition.setCellValueFactory(new PropertyValueFactory<>("MedicineCondition"));
         tableWeight.setCellValueFactory(new PropertyValueFactory<>("MedicineWeight"));
-        tableInventory.setCellValueFactory(new PropertyValueFactory<>("InventoryId"));
         tableQty.setCellValueFactory(new PropertyValueFactory<>("Quantity"));
-        tableFullWEight.setCellValueFactory(new PropertyValueFactory<>("FullWeight"));
 
 
         try {
@@ -56,9 +57,6 @@ public class MedicineController implements Initializable {
     private TextField Mid;
 
     @FXML
-    private TextField MinvId;
-
-    @FXML
     private TextField Mname;
 
     @FXML
@@ -74,9 +72,6 @@ public class MedicineController implements Initializable {
     private Button delete;
 
     @FXML
-    private Label fullQty;
-
-    @FXML
     private ImageView image;
 
     @FXML
@@ -88,11 +83,6 @@ public class MedicineController implements Initializable {
     @FXML
     private TableColumn<MedicineTM, String> tableCondition;
 
-    @FXML
-    private TableColumn<MedicineTM, Double> tableFullWEight;
-
-    @FXML
-    private TableColumn<MedicineTM, String> tableInventory;
 
     @FXML
     private TableColumn<MedicineTM, String> tableMedNAme;
@@ -108,6 +98,12 @@ public class MedicineController implements Initializable {
 
     @FXML
     private Button update;
+
+    @FXML
+    private TextField getQTY;
+
+    @FXML
+    private Button getQty;
 
     MedicineModel medicineModel = new MedicineModel();
 
@@ -127,7 +123,7 @@ public class MedicineController implements Initializable {
 
     @FXML
     void deleteAction(ActionEvent event) {
-        MedicineTM selectedMedicine = table.getSelectionModel().getSelectedItem();
+        String selectedMedicine = Mid.getText();
 
         if (selectedMedicine == null) {
             new Alert(Alert.AlertType.WARNING, "Please select a medicine to delete.").show();
@@ -135,7 +131,7 @@ public class MedicineController implements Initializable {
         }
 
         try {
-            boolean isDeleted = medicineModel.delete(selectedMedicine.getMedicineId(), selectedMedicine.getInventoryId());
+            boolean isDeleted = medicineModel.delete(selectedMedicine);
 
             if (isDeleted) {
                 refreshPage();
@@ -154,31 +150,27 @@ public class MedicineController implements Initializable {
             String medId = Mid.getText();
             String medName = Mname.getText();
             String medCondition = Mcoondition.getText();
-            String invId = MinvId.getText();
+            Double mWeight = Double.valueOf(Mweight.getText());
+            Integer qty = Integer.valueOf(Mqty.getText());
 
-            // Regex patterns
+
+        // Regex patterns
             String idPattern = "^[A-Za-z0-9]+$";
             String weightPattern = "^[0-9]*\\.?[0-9]+$"; // Accepts positive numbers with optional decimal
             String quantityPattern = "^[1-9][0-9]*$"; // Accepts positive integers only
 
             boolean isValidID = medId.matches(idPattern);
-            boolean isValidInvID = invId.matches(idPattern);
             boolean isValidWeight = Mweight.getText().matches(weightPattern);
             boolean isValidQty = Mqty.getText().matches(quantityPattern);
 
             // Reset styles
             Mid.setStyle("-fx-border-color: none;");
-            MinvId.setStyle("-fx-border-color: none;");
             Mweight.setStyle("-fx-border-color: none;");
             Mqty.setStyle("-fx-border-color: none;");
 
             if (!isValidID) {
                 Mid.setStyle(Mid.getStyle() + ";-fx-border-color: red;");
                 System.out.println("Invalid Medicine ID: " + medId);
-            }
-            if (!isValidInvID) {
-                MinvId.setStyle(MinvId.getStyle() + ";-fx-border-color: red;");
-                System.out.println("Invalid Inventory ID: " + invId);
             }
             if (!isValidWeight) {
                 Mweight.setStyle(Mweight.getStyle() + ";-fx-border-color: red;");
@@ -189,15 +181,8 @@ public class MedicineController implements Initializable {
                 System.out.println("Invalid Quantity: " + Mqty.getText());
             }
 
-            if (isValidID && isValidInvID && isValidWeight && isValidQty) {
-                double medWeight = Double.parseDouble(Mweight.getText());
-                int qty = Integer.parseInt(Mqty.getText());
-
-                // Calculate full weight
-                double fullWeight = medWeight * qty;
-                fullQty.setText(String.valueOf(fullWeight));
-
-                MedicineDto medicineDto = new MedicineDto(medId, medName, medCondition, medWeight, invId, qty, fullWeight);
+            if (isValidID  && isValidWeight && isValidQty) {
+                MedicineDto medicineDto = new MedicineDto(medId, medName, medCondition, mWeight, qty);
 
                 try {
                     boolean isSaved = medicineModel.save(medicineDto);
@@ -226,14 +211,13 @@ public class MedicineController implements Initializable {
             Mname.setText(medicineTM.getMedicineName());
             Mcoondition.setText(medicineTM.getMedicineCondition());
             Mweight.setText(String.valueOf(medicineTM.getMedicineWeight()));
-            MinvId.setText(medicineTM.getInventoryId());
             Mqty.setText(String.valueOf(medicineTM.getQuantity()));
-            fullQty.setText(String.valueOf(medicineTM.getFullWeight()));
 
             save.setDisable(false);
 
             delete.setDisable(false);
             update.setDisable(false);
+            getQty.setDisable(false);
         }
 
 
@@ -244,7 +228,8 @@ public class MedicineController implements Initializable {
         String medId = Mid.getText();
         String medName = Mname.getText();
         String medCondition = Mcoondition.getText();
-        String invId = MinvId.getText();
+        Double mWeight = Double.valueOf(Mweight.getText());
+        Integer qty = Integer.valueOf(Mqty.getText());
 
         // Regex patterns
         String idPattern = "^[A-Za-z0-9]+$";
@@ -252,23 +237,17 @@ public class MedicineController implements Initializable {
         String quantityPattern = "^[1-9][0-9]*$"; // Accepts positive integers only
 
         boolean isValidID = medId.matches(idPattern);
-        boolean isValidInvID = invId.matches(idPattern);
         boolean isValidWeight = Mweight.getText().matches(weightPattern);
         boolean isValidQty = Mqty.getText().matches(quantityPattern);
 
         // Reset styles
         Mid.setStyle("-fx-border-color: none;");
-        MinvId.setStyle("-fx-border-color: none;");
         Mweight.setStyle("-fx-border-color: none;");
         Mqty.setStyle("-fx-border-color: none;");
 
         if (!isValidID) {
             Mid.setStyle(Mid.getStyle() + ";-fx-border-color: red;");
             System.out.println("Invalid Medicine ID: " + medId);
-        }
-        if (!isValidInvID) {
-            MinvId.setStyle(MinvId.getStyle() + ";-fx-border-color: red;");
-            System.out.println("Invalid Inventory ID: " + invId);
         }
         if (!isValidWeight) {
             Mweight.setStyle(Mweight.getStyle() + ";-fx-border-color: red;");
@@ -279,15 +258,8 @@ public class MedicineController implements Initializable {
             System.out.println("Invalid Quantity: " + Mqty.getText());
         }
 
-        if (isValidID && isValidInvID && isValidWeight && isValidQty) {
-            double medWeight = Double.parseDouble(Mweight.getText());
-            int qty = Integer.parseInt(Mqty.getText());
-
-            // Calculate full weight
-            double fullWeight = medWeight * qty;
-            fullQty.setText(String.valueOf(fullWeight));
-
-            MedicineDto medicineDto = new MedicineDto(medId, medName, medCondition, medWeight, invId, qty, fullWeight);
+        if (isValidID && isValidWeight && isValidQty) {
+            MedicineDto medicineDto = new MedicineDto(medId, medName, medCondition,mWeight, qty);
 
             try {
                 boolean isSaved = medicineModel.update(medicineDto);
@@ -311,6 +283,7 @@ public class MedicineController implements Initializable {
         loadTableData();
 
         save.setDisable(false);
+        getQty.setDisable(true);
 
         update.setDisable(true);
         delete.setDisable(true);
@@ -319,9 +292,7 @@ public class MedicineController implements Initializable {
         Mname.setText("");
         Mcoondition.setText("");
         Mweight.setText("");
-        MinvId.setText("");
         Mqty.setText("");
-        fullQty.setText("");
     }
     private void loadTableData() throws SQLException, ClassNotFoundException {
 
@@ -334,9 +305,7 @@ public class MedicineController implements Initializable {
                     medicineDto.getMedicineName(),
                     medicineDto.getMedicineCondition(),
                     medicineDto.getMedicineWeight(),
-                    medicineDto.getInventoryId(),
-                    medicineDto.getQuantity(),
-                    medicineDto.getFullWeight()
+                    medicineDto.getQuantity()
 
             );
             medicineTMS.add(medicineTM);
@@ -344,5 +313,65 @@ public class MedicineController implements Initializable {
 
         table.setItems(medicineTMS);
     }
+
+    @FXML
+    void getqtyAction(ActionEvent event) {
+        try {
+            MedicineTM selectedMedicine = table.getSelectionModel().getSelectedItem();
+
+            if (selectedMedicine != null) {
+                // Validate the inputs before attempting to parse them
+                String mQtyText = getQTY.getText();
+                int mQty = Integer.parseInt(mQtyText);
+
+                // Calculate the new quantity
+                int currentQty = selectedMedicine.getQuantity(); // Assuming a getter for quantity
+                int updatedQty = currentQty - mQty;
+
+                if (updatedQty >= 0) {
+                    selectedMedicine.setQuantity(updatedQty); // Assuming a setter for quantity
+                    updateMedicineQuantityInDatabase(selectedMedicine.getMedicineId(), updatedQty);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Medicine Qty Updated");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Medicine Qty Updated");
+                    alert.showAndWait();
+                    table.refresh();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText(" Quantity is Over");
+                    alert.showAndWait();
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Select Quantity From the table ");
+                alert.showAndWait();
+            }
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Enter an Quantity to get");
+            alert.showAndWait();
+        }
+    }
+
+    // Update the quantity in the database
+    private void updateMedicineQuantityInDatabase(String medicineId, int updatedQty) {
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/animal_hospital", "root", "Ijse@1234")) {
+            String sql = "UPDATE medicine SET Qty = ? WHERE medicine_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, updatedQty);
+            preparedStatement.setString(2, medicineId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

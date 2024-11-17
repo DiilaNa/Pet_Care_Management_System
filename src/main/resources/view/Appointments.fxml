@@ -22,7 +22,7 @@
          <children>
             <Button fx:id="save" layoutX="35.0" layoutY="203.0" mnemonicParsing="false" onAction="#saveAPT" prefHeight="36.0" prefWidth="169.0" style="-fx-background-color: #d35400;" text="ADD APPOINTMENT" textFill="WHITE" />
             <Button fx:id="cancel" layoutX="35.0" layoutY="301.0" mnemonicParsing="false" onAction="#cancelAPt" prefHeight="36.0" prefWidth="169.0" style="-fx-background-color: #d35400;" text="CANCEL APPOINTMENT" textFill="WHITE" />
-            <Label fx:id="TimeLabel" layoutX="105.0" layoutY="23.0" text="ss" textFill="WHITE">
+            <Label fx:id="TimeLabel" layoutX="65.0" layoutY="27.0" text="ss" textFill="WHITE">
                <font>
                   <Font name="DejaVu Sans Bold" size="24.0" />
                </font>

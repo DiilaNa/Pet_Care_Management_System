@@ -48,11 +48,6 @@
             <Font name="DejaVu Sans Condensed Bold" size="30.0" />
          </font>
       </Label>
-      <Label alignment="TOP_LEFT" layoutX="49.0" layoutY="415.0" style="-fx-background-radius: 1;" text="COST" textAlignment="CENTER" textFill="#111010">
-         <font>
-            <Font name="DejaVu Sans Condensed Bold" size="30.0" />
-         </font>
-      </Label>
       <Label layoutX="50.0" layoutY="343.0" style="-fx-background-radius: 1;" text="DURATION">
          <font>
             <Font name="DejaVu Sans Condensed Bold" size="30.0" />
@@ -64,7 +59,6 @@
          </font>
       </Label>
       <TextField fx:id="serviceID" layoutX="281.0" layoutY="195.0" prefHeight="35.0" prefWidth="244.0" />
-      <TextField fx:id="cost" layoutX="281.0" layoutY="415.0" prefHeight="35.0" prefWidth="244.0" />
       <TextField fx:id="duration" layoutX="281.0" layoutY="343.0" prefHeight="35.0" prefWidth="244.0" />
       <TextField fx:id="serviceType" layoutX="281.0" layoutY="276.0" prefHeight="35.0" prefWidth="244.0" />
       <ComboBox fx:id="PETid" editable="true" layoutX="669.0" layoutY="200.0" prefHeight="24.0" prefWidth="193.0" promptText="select a Pet ID" />
@@ -72,10 +66,9 @@
       <TableView fx:id="table" layoutY="522.0" onMouseClicked="#MouseClickAction" opacity="0.87" prefHeight="379.0" prefWidth="1200.0" style="-fx-background-color: #f39c12;">
         <columns>
           <TableColumn fx:id="tableServiceId" prefWidth="211.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="SERVICE ID" />
-          <TableColumn fx:id="tableServiceName" prefWidth="244.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="SERVICE NAME" />
+            <TableColumn fx:id="tableServiceName" prefWidth="340.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="SERVICE NAME" />
             <TableColumn fx:id="tableDuration" prefWidth="288.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="DURATION" />
-            <TableColumn fx:id="tableCost" prefWidth="219.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="COST" />
-            <TableColumn fx:id="tablePetId" prefWidth="237.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="PET ID" />
+            <TableColumn fx:id="tablePetId" prefWidth="360.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="PET ID" />
         </columns>
       </TableView>
       <Label layoutX="39.0" layoutY="276.0" style="-fx-background-radius: 1;" text="SERVICE NAME">

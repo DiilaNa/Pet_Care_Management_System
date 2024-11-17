@@ -38,9 +38,6 @@ public class InvoiceController implements Initializable {
     private ImageView image;
 
     @FXML
-    private TextField paymentInvAmount;
-
-    @FXML
     private TextField paymentInvName;
 
 
@@ -69,8 +66,11 @@ public class InvoiceController implements Initializable {
     @FXML
     private TableColumn<InvoiceTM, String> tablePaymenID;
 
-/*    @FXML
-    private Label PaymentIDLOad;*/
+    @FXML
+    private Label defaultPrice;
+
+    @FXML
+    private Label servicePrice;
 
     @FXML
     private Button update;
@@ -141,7 +141,7 @@ public class InvoiceController implements Initializable {
     void saveAction(ActionEvent event) {
         String invoiceNo = invNO.getText();
         String invName = paymentInvName.getText();
-        Double invoiceAmount = Double.parseDouble(paymentInvAmount.getText());
+        Double invoiceAmount = Double.valueOf(defaultPrice.getText());
         String paymentIDtxt = paymenttID.getValue();
 
 
@@ -153,7 +153,7 @@ public class InvoiceController implements Initializable {
 
         // Reset styles
         invNO.setStyle("-fx-border-color: none;");
-        paymentInvAmount.setStyle("-fx-border-color: none;");
+        defaultPrice.setStyle("-fx-border-color: none;");
 
         // Apply error styles if validation fails
         if (!isValidID) {
@@ -189,7 +189,7 @@ public class InvoiceController implements Initializable {
         InvoiceTM invoiceTM = table.getSelectionModel().getSelectedItem();
         if (invoiceTM != null) {
             paymentInvName.setText(invoiceTM.getInvoiceName());
-            paymentInvAmount.setText(String.valueOf(invoiceTM.getInvoiceAmount()));
+            defaultPrice.setText(String.valueOf(invoiceTM.getInvoiceAmount()));
             invNO.setText(invoiceTM.getInvoiceNo());
             paymenttID.setValue(invoiceTM.getPaymntid());
 
@@ -205,7 +205,7 @@ public class InvoiceController implements Initializable {
     void updateAction(ActionEvent event) {
         String invoiceNo = invNO.getText();
         String invName = paymentInvName.getText();
-        Double invoiceAmount = Double.parseDouble(paymentInvAmount.getText());
+        Double invoiceAmount = Double.parseDouble(defaultPrice.getText());
         String paymentIDtxt = paymenttID.getValue();
         // Validation patterns
         String idPattern = "^[A-Za-z0-9]+$";
@@ -213,7 +213,7 @@ public class InvoiceController implements Initializable {
         boolean isValidID = paymentIDtxt.matches(idPattern);
 
         invNO.setStyle("-fx-border-color: none;");
-        paymentInvAmount.setStyle("-fx-border-color: none;");
+        defaultPrice.setStyle("-fx-border-color: none;");
 
         if (!isValidID) {
             invNO.setStyle(invNO.getStyle() + ";-fx-border-color: red;");
@@ -245,6 +245,8 @@ public class InvoiceController implements Initializable {
 
         loadTableData();
         loadNextInvoiceID();
+        loadAptPrice();
+        //loadServiceBookingPrice();
 
         save.setDisable(false);
 
@@ -252,7 +254,6 @@ public class InvoiceController implements Initializable {
         delete.setDisable(true);
 
         paymentInvName.setText("");
-        paymentInvAmount.setText("");
 
     }
     private void loadTableData() throws SQLException, ClassNotFoundException {
@@ -295,5 +296,18 @@ public class InvoiceController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+    public void loadAptPrice()  {
+
+        Double aptPrice = 5000.00;
+        defaultPrice.setText(aptPrice.toString());
+
+
+    }/*
+    public void loadServiceBookingPrice() throws SQLException  {
+        Double servPrice = null;
+        servPrice = invoiceModel.getServicePrice();
+        servicePrice.setText(String.valueOf(servPrice));
+
+    }*/
 
 }

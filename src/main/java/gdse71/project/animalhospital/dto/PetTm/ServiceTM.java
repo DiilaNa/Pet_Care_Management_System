@@ -11,7 +11,6 @@ import lombok.*;
 public class ServiceTM {
     private String ServiceID;
     private String ServiceName;
-    private Double Cost;
     private String Duration;
     private String PetIdService;
 }

@@ -17,9 +17,8 @@ public class ServiceModel {
                 Servicedto servicedto = new Servicedto(
                         rst.getString(1),
                         rst.getString(2),
-                        rst.getDouble(3),
-                        rst.getString(4),
-                        rst.getString(5)
+                        rst.getString(3),
+                        rst.getString(4)
 
                 );
                 servicedtos.add(servicedto);
@@ -28,19 +27,17 @@ public class ServiceModel {
         }
         public boolean saveService(Servicedto servicedto) throws SQLException, ClassNotFoundException {
             return Util.execute(
-                    "insert into service_booking values (?,?,?,?,?)",
+                    "insert into service_booking values (?,?,?,?)",
                     servicedto.getServiceID(),
                     servicedto.getServiceName(),
-                    servicedto.getCost(),
                     servicedto.getDuration(),
                     servicedto.getPetIdService()
             );
         }
         public boolean updateService(Servicedto servicedto) throws SQLException, ClassNotFoundException {
             return Util.execute(
-                    "update service_booking set  service_name=?, cost=?, duration=? , petid=?  where service_id=?",
+                    "update service_booking set  service_name=?, duration=? , petid=?  where service_id=?",
                     servicedto.getServiceName(),
-                    servicedto.getCost(),
                     servicedto.getDuration(),
                     servicedto.getPetIdService(),
                     servicedto.getServiceID()
