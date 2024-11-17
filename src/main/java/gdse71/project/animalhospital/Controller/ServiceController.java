@@ -83,7 +83,7 @@ public class ServiceController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Image loginImage = new Image(getClass().getResourceAsStream("/images/servicedetails.jpeg"));
+        Image loginImage = new Image(getClass().getResourceAsStream("/images/ALL PET.png"));
         image.setImage(loginImage);
 
         tableServiceId.setCellValueFactory(new PropertyValueFactory<>("serviceID"));
