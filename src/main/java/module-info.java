@@ -4,6 +4,7 @@ module gdse71.project.animalhospital {
     requires lombok;
     requires java.sql;
     requires net.sf.jasperreports.core;
+    requires java.mail;
 
     opens gdse71.project.animalhospital to javafx.fxml;
     exports gdse71.project.animalhospital;

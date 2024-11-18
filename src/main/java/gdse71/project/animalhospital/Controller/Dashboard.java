@@ -58,11 +58,27 @@ public class Dashboard {
 
     @FXML
     void SMSAction(ActionEvent event) {
+        try {
+            Stage stage = (Stage) Shedule.getScene().getWindow();
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Sms.fxml"))));
+            stage.setTitle("Pets & Vets Animal Hospital");
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
     @FXML
     void ShedulebtnAction(ActionEvent event) {
+        try {
+            Stage stage = (Stage) Shedule.getScene().getWindow();
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Shedule.fxml"))));
+            stage.setTitle("Pets & Vets Animal Hospital");
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
