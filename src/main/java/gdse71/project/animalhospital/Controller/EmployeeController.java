@@ -1,9 +1,7 @@
 package gdse71.project.animalhospital.Controller;
 
 import gdse71.project.animalhospital.dto.Employeedto;
-import gdse71.project.animalhospital.dto.PetTm.ApointmentsTM;
 import gdse71.project.animalhospital.dto.PetTm.EmployeeTM;
-import gdse71.project.animalhospital.dto.PetTm.OwnerTM;
 import gdse71.project.animalhospital.model.EmployeeModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,9 +41,6 @@ public class EmployeeController implements Initializable {
     private TextField duty;
 
     @FXML
-    private TextField empID;
-
-    @FXML
     private TextField empNAme;
 
     @FXML
@@ -74,6 +69,12 @@ public class EmployeeController implements Initializable {
 
     @FXML
     private Button update;
+
+    @FXML
+    private Label empId;
+
+    @FXML
+    private Button reset;
 
     EmployeeModel employeeModel = new EmployeeModel();
 
@@ -118,35 +119,21 @@ public class EmployeeController implements Initializable {
 
     @FXML
     void saveAction(ActionEvent event) {
-        String employeeID = empID.getText();
+        String employeeID = empId.getText();
         String employeeName = empNAme.getText();
         String employeeDuty = duty.getText();
         String employeeAddress = address.getText();
         String employeeContact = contact.getText();
 
-        String idPattern = "^[A-Za-z0-9]+$";
         String namePattern = "^[A-Za-z\\s]+$";
         String dutyPattern = "^[A-Za-z\\s]+$";
         String addressPattern ="^[a-zA-Z0-9, -]+$";
         String contactPattern = "^\\d{10}$";
 
-        boolean isValidID = employeeID.matches(idPattern);
         boolean isValidName = employeeName.matches(namePattern);
         boolean isValidDuty = employeeDuty.matches(dutyPattern);
         boolean isValidAddress = employeeAddress.matches(addressPattern);
         boolean isValidContact = employeeContact.matches(contactPattern);
-
- /*       // Reset styles to default
-        empID.setStyle(null);
-        empNAme.setStyle(null);
-        duty.setStyle(null);
-        address.setStyle(null);
-        contact.setStyle(null);*/
-
-        if (!isValidID) {
-            empID.setStyle("-fx-border-color: red;");
-            System.out.println("Invalid Employee ID: " + employeeID);
-        }
         if (!isValidName) {
             empNAme.setStyle("-fx-border-color: red;");
             System.out.println("Invalid Employee Name: " + employeeName);
@@ -164,7 +151,7 @@ public class EmployeeController implements Initializable {
             System.out.println("Invalid Contact Number: " + employeeContact);
         }
 
-        if (isValidID && isValidName && isValidDuty && isValidAddress && isValidContact) {
+        if (isValidName && isValidDuty && isValidAddress && isValidContact) {
             Employeedto employeedto = new Employeedto(
                     employeeID,
                     employeeName,
@@ -193,7 +180,7 @@ public class EmployeeController implements Initializable {
         EmployeeTM employeeTM = table.getSelectionModel().getSelectedItem();
 
         if (employeeTM != null) {
-            empID.setText(employeeTM.getEmployeeId());
+            empId.setText(employeeTM.getEmployeeId());
             empNAme.setText(employeeTM.getEmployeeName());
             duty.setText(employeeTM.getEmployeeDuty());
             address.setText(employeeTM.getEmployeeAddress());
@@ -209,35 +196,22 @@ public class EmployeeController implements Initializable {
 
     @FXML
     void updateAction(ActionEvent event) {
-        String employeeID = empID.getText();
+        String employeeID = empId.getText();
         String employeeName = empNAme.getText();
         String employeeDuty = duty.getText();
         String employeeAddress = address.getText();
         String employeeContact = contact.getText();
 
-        String idPattern = "^[A-Za-z0-9]+$";
         String namePattern = "^[A-Za-z\\s]+$";
         String dutyPattern = "^[A-Za-z\\s]+$";
         String addressPattern ="^[a-zA-Z0-9, -]+$";
         String contactPattern = "^\\d{10}$";
 
-        boolean isValidID = employeeID.matches(idPattern);
         boolean isValidName = employeeName.matches(namePattern);
         boolean isValidDuty = employeeDuty.matches(dutyPattern);
         boolean isValidAddress = employeeAddress.matches(addressPattern);
         boolean isValidContact = employeeContact.matches(contactPattern);
 
- /*       // Reset styles to default
-        empID.setStyle(null);
-        empNAme.setStyle(null);
-        duty.setStyle(null);
-        address.setStyle(null);
-        contact.setStyle(null);*/
-
-        if (!isValidID) {
-            empID.setStyle("-fx-border-color: red;");
-            System.out.println("Invalid Employee ID: " + employeeID);
-        }
         if (!isValidName) {
             empNAme.setStyle("-fx-border-color: red;");
             System.out.println("Invalid Employee Name: " + employeeName);
@@ -255,7 +229,7 @@ public class EmployeeController implements Initializable {
             System.out.println("Invalid Contact Number: " + employeeContact);
         }
 
-        if (isValidID && isValidName && isValidDuty && isValidAddress && isValidContact) {
+        if (isValidName && isValidDuty && isValidAddress && isValidContact) {
             Employeedto employeedto = new Employeedto(
                     employeeID,
                     employeeName,
@@ -282,7 +256,7 @@ public class EmployeeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Image loginImage = new Image(getClass().getResourceAsStream("/images/Employee.jpeg"));
+        Image loginImage = new Image(getClass().getResourceAsStream("/images/ALL PET.png"));
         image.setImage(loginImage);
 
         tableEmpID.setCellValueFactory(new PropertyValueFactory<>("EmployeeId"));
@@ -324,15 +298,31 @@ public class EmployeeController implements Initializable {
         loadTableData();
 
         save.setDisable(false);
-
+        reset.setDisable(false);
         update.setDisable(true);
         delete.setDisable(true);
 
-        empID.setText("");
+       loadNextID();
         empNAme.setText("");
         duty.setText("");
         address.setText("");
         contact.setText("");
+
+    }
+
+    @FXML
+    void resetAction(ActionEvent event) {
+        loadNextID();
+        empNAme.setText("");
+        duty.setText("");
+        address.setText("");
+        contact.setText("");
+
+    }
+    public void loadNextID()  {
+        String nextId = null;
+        nextId = employeeModel.getNextID();
+        empId.setText(nextId);
 
     }
 }

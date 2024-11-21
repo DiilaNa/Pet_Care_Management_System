@@ -14,65 +14,74 @@
    <children>
       <ImageView fx:id="image" fitHeight="879.0" fitWidth="1227.0" layoutX="-21.0" layoutY="-8.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../../Pictures/animall hosptila/Employee.jpeg" />
+            <Image url="@../../../../../../../Pictures/animall hosptila/ALL PET.png" />
          </image>
       </ImageView>
-      <Button fx:id="save" layoutX="30.0" layoutY="136.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="44.0" prefWidth="114.0" style="-fx-background-color: #d35400; -fx-background-radius: 12;" text="SAVE" textFill="WHITE">
+      <Button fx:id="save" layoutX="489.0" layoutY="374.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="44.0" prefWidth="114.0" style="-fx-background-color: #d35400; -fx-background-radius: 12;" text="SAVE" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button fx:id="delete" layoutX="30.0" layoutY="223.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="44.0" prefWidth="114.0" style="-fx-background-color: #d35400; -fx-background-radius: 12;" text="DELETE" textFill="WHITE">
+      <Button fx:id="delete" layoutX="674.0" layoutY="374.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="44.0" prefWidth="114.0" style="-fx-background-color: #d35400; -fx-background-radius: 12;" text="DELETE" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button fx:id="update" layoutX="30.0" layoutY="308.0" mnemonicParsing="false" onAction="#updateAction" prefHeight="44.0" prefWidth="114.0" style="-fx-background-color: #d35400; -fx-background-radius: 12;" text="UPDATE" textFill="WHITE">
+      <Button fx:id="update" layoutX="852.0" layoutY="374.0" mnemonicParsing="false" onAction="#updateAction" prefHeight="44.0" prefWidth="114.0" style="-fx-background-color: #d35400; -fx-background-radius: 12;" text="UPDATE" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Label layoutX="413.0" layoutY="36.0" prefHeight="44.0" prefWidth="420.0" text="EMPLOYEE DETAILS" textFill="WHITE">
+      <Label layoutX="413.0" layoutY="36.0" prefHeight="44.0" prefWidth="420.0" text="EMPLOYEE DETAILS">
          <font>
             <Font name="DejaVu Sans Bold" size="38.0" />
          </font>
       </Label>
-      <Label layoutX="208.0" layoutY="317.0" text="ADDRESS" textFill="WHITE">
+      <Label layoutX="713.0" layoutY="210.0" text="ADDRESS">
          <font>
-            <Font size="21.0" />
+            <Font name="DejaVu Sans Bold" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="208.0" layoutY="264.0" text="DUTY" textFill="WHITE">
+      <Label layoutX="201.0" layoutY="277.0" text="DUTY">
          <font>
-            <Font size="21.0" />
+            <Font name="DejaVu Sans Bold" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="201.0" layoutY="210.0" text="EMPLOYEE NAME" textFill="WHITE">
+      <Label layoutX="201.0" layoutY="210.0" text="EMPLOYEE NAME">
          <font>
-            <Font size="21.0" />
+            <Font name="DejaVu Sans Bold" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="201.0" layoutY="145.0" text="EMPLOYEE ID" textFill="WHITE">
+      <Label layoutX="201.0" layoutY="145.0" text="EMPLOYEE ID">
          <font>
-            <Font size="21.0" />
+            <Font name="DejaVu Sans Bold" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="674.0" layoutY="145.0" text="CONATCT NO" textFill="WHITE">
+      <Label layoutX="674.0" layoutY="145.0" text="CONATCT NO">
          <font>
-            <Font size="21.0" />
+            <Font name="DejaVu Sans Bold" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="empID" layoutX="432.0" layoutY="146.0" />
-      <TextField fx:id="empNAme" layoutX="432.0" layoutY="211.0" />
-      <TextField fx:id="duty" layoutX="432.0" layoutY="265.0" prefHeight="24.0" prefWidth="171.0" />
-      <TextField fx:id="address" layoutX="432.0" layoutY="318.0" />
-      <TextField fx:id="contact" layoutX="900.0" layoutY="146.0" />
-      <TableView fx:id="table" layoutX="1.0" layoutY="436.0" onMouseClicked="#tableONACTION" prefHeight="435.0" prefWidth="1195.0" style="-fx-background-color: f39c12;">
+      <TextField fx:id="empNAme" layoutX="432.0" layoutY="211.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;" />
+      <TextField fx:id="duty" layoutX="432.0" layoutY="278.0" prefHeight="24.0" prefWidth="171.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;" />
+      <TextField fx:id="address" layoutX="900.0" layoutY="211.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;"/>
+      <TextField fx:id="contact" layoutX="900.0" layoutY="146.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;"/>
+      <TableView fx:id="table" layoutX="1.0" layoutY="460.0" onMouseClicked="#tableONACTION" opacity="0.92" prefHeight="411.0" prefWidth="1206.0" style="-fx-background-color: f39c12;">
         <columns>
           <TableColumn fx:id="tableEmpID" prefWidth="189.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="EMPLOYEE ID" />
           <TableColumn fx:id="tableEmpName" prefWidth="236.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="EMPLOYEE NAME" />
             <TableColumn fx:id="tableDuty" prefWidth="199.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="DUTY" />
             <TableColumn fx:id="tableAddress" prefWidth="290.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="ADDRESS" />
-            <TableColumn fx:id="tableContactNo" prefWidth="280.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="CONTACT NO" />
+            <TableColumn fx:id="tableContactNo" prefWidth="291.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="CONTACT NO" />
         </columns>
       </TableView>
-      <Button fx:id="back" layoutX="25.0" layoutY="24.0" mnemonicParsing="false" onAction="#backAction" style="-fx-background-color: black;" text="BACK" textFill="WHITE" underline="true" />
+      <Button fx:id="back" layoutX="25.0" layoutY="24.0" mnemonicParsing="false" onAction="#backAction" style="-fx-background-color: black; -fx-background-radius: 21;" text="BACK" textFill="WHITE" underline="true" />
+      <Label fx:id="empId" layoutX="425.0" layoutY="145.0" text="EMPLOYEE ID">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Button fx:id="reset" layoutX="1023.0" layoutY="374.0" mnemonicParsing="false" onAction="#resetAction" prefHeight="44.0" prefWidth="114.0" style="-fx-background-color: #d35400; -fx-background-radius: 12;" text="RESET" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

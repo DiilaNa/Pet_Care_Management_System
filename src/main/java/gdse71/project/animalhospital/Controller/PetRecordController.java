@@ -81,11 +81,14 @@ public class PetRecordController implements Initializable {
     @FXML
     private TextField weight;
 
+    @FXML
+    private Button reset;
+
     PetRecordModel petRecordModel = new PetRecordModel();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Image loginImage = new Image(getClass().getResourceAsStream("/images/petrecord.jpeg"));
+        Image loginImage = new Image(getClass().getResourceAsStream("/images/ALL PET.png"));
         image.setImage(loginImage);
 
         tablerecid.setCellValueFactory(new PropertyValueFactory<>("recordId"));
@@ -337,6 +340,20 @@ public class PetRecordController implements Initializable {
         desc.setText("");
         status.setText("");
         weight.setText("");
+
+    }
+
+    @FXML
+    void reserAction(ActionEvent event) {
+        recID.setText("");
+        desc.setText("");
+        status.setText("");
+        weight.setText("");
+        try {
+            loadPetIds();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

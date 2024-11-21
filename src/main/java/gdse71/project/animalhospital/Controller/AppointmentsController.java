@@ -1,10 +1,12 @@
 package gdse71.project.animalhospital.Controller;
 
+import gdse71.project.animalhospital.db.DBConnection;
 import gdse71.project.animalhospital.dto.Appointmentsdto;
 import gdse71.project.animalhospital.dto.Ownerdto;
 import gdse71.project.animalhospital.dto.PaymentDto;
 import gdse71.project.animalhospital.dto.Petdto;
 import gdse71.project.animalhospital.model.AppointmentsModel;
+import gdse71.project.animalhospital.model.PetModel;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
@@ -101,6 +103,7 @@ public class AppointmentsController implements Initializable {
 private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     AppointmentsModel appointmentsModel = new AppointmentsModel();
+    PetModel petModel = new PetModel();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -262,8 +265,10 @@ private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:
                         pettype
                 );
 
-
+                System.out.println(petId);
                 boolean isSaved = appointmentsModel.save(appointment,petdto,ownerdto,paymentDto);
+               // petModel.savePet(petdto);
+
 
                 if (isSaved) {
                     refreshPage();
@@ -310,20 +315,17 @@ private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:
         }
     public void loadNextPetID()  {
 
-            String nextCustomerId = null;
-            nextCustomerId = appointmentsModel.getNextPetId();
+            String nextCustomerId =appointmentsModel.getNextPetId();
             PeTid.setText(nextCustomerId);
 
     }
     public void loadNextOwnerID()  {
-            String nextCustomerId = null;
-            nextCustomerId = appointmentsModel.getNextOwnerId();
+            String nextCustomerId = appointmentsModel.getNextOwnerId();
             ownerid.setText(nextCustomerId);
 
     }
     public void loadNextPayID()  {
-        String nextCustomerId = null;
-        nextCustomerId = appointmentsModel.getNextPayId();
+        String nextCustomerId = appointmentsModel.getNextPayId();
         PaymentId.setText(nextCustomerId);
 
     }
@@ -333,10 +335,8 @@ private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:
         TimeLabel.setText(currentTime);
     }
     private void loadAptid() throws SQLException {
-        final Connection connection;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/animal_hospital", "root", "Ijse@1234");
+            Connection connection = DBConnection.getInstance().getConnection();
 
             ResultSet rs = connection.createStatement().executeQuery("SELECT appointment_id FROM appointments");
             ObservableList<String> data = FXCollections.observableArrayList();

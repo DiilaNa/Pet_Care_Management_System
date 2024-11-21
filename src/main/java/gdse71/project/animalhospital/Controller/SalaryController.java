@@ -1,5 +1,6 @@
 package gdse71.project.animalhospital.Controller;
 
+import gdse71.project.animalhospital.db.DBConnection;
 import gdse71.project.animalhospital.dto.PetTm.SalaryTM;
 import gdse71.project.animalhospital.dto.Salarydto;
 import gdse71.project.animalhospital.model.SalaryModel;
@@ -24,6 +25,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -31,13 +34,18 @@ import java.util.ResourceBundle;
 public class SalaryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Image loginImage = new Image(getClass().getResourceAsStream("/images/salary.jpeg"));
+        Image loginImage = new Image(getClass().getResourceAsStream("/images/ALL PET.png"));
         image.setImage(loginImage);
 
         tableSalaryId.setCellValueFactory(new PropertyValueFactory<>("salaryId"));
         tableSalaryDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         tableSalaryAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
         tableSalaryEmployeeId.setCellValueFactory(new PropertyValueFactory<>("EmployeeId"));
+
+        LocalDate date = LocalDate.now();
+        String formattedDate = date.format(formatter);
+        dateLAbel.setText(formattedDate);
+
 
         try {
             refreshPage();
@@ -49,9 +57,6 @@ public class SalaryController implements Initializable {
 
     @FXML
     private TextField SalAmount;
-
-    @FXML
-    private TextField SalDate;
 
     @FXML
     private ComboBox<String> SalEmpId;
@@ -66,10 +71,14 @@ public class SalaryController implements Initializable {
     private ImageView image;
 
     @FXML
-    private TextField salaryID;
+    private Button save;
+
 
     @FXML
-    private Button save;
+    private Button reset;
+
+    @FXML
+    private Label salId;
 
     @FXML
     private TableView<SalaryTM> table;
@@ -89,7 +98,11 @@ public class SalaryController implements Initializable {
     @FXML
     private Button update;
 
+    @FXML
+    private Label dateLAbel;
+
     SalaryModel salaryModel = new SalaryModel();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     @FXML
     void backAction(ActionEvent event) {
@@ -133,8 +146,8 @@ public class SalaryController implements Initializable {
     @FXML
     void saveAction(ActionEvent event) {
         // Retrieve input values
-        String salaryId = salaryID.getText();
-        String dateText = SalDate.getText();
+        String salaryId = salId.getText();
+        String dateText = dateLAbel.getText();
         String amountText = SalAmount.getText();
         String employeeId = SalEmpId.getValue();
 
@@ -142,26 +155,9 @@ public class SalaryController implements Initializable {
         String idPattern = "^[A-Za-z0-9]+$"; // Alphanumeric pattern
         String amountPattern = "^[0-9]*\\.?[0-9]+$"; // Accepts positive numbers with optional decimal
 
-        boolean isValidID = salaryId.matches(idPattern);
-        boolean isValidDate = !dateText.isEmpty(); // Simple non-empty check (you may apply additional date validation)
         boolean isValidAmount = amountText.matches(amountPattern);
         boolean isValidEmpID = employeeId != null && employeeId.matches(idPattern);
 
-      /*  // Reset styles
-        salaryID.setStyle("-fx-border-color: none;");
-        SalDate.setStyle("-fx-border-color: none;");
-        SalAmount.setStyle("-fx-border-color: none;");
-        SalEmpId.setStyle("-fx-border-color: none;");
-*/
-        // Highlight invalid fields
-        if (!isValidID) {
-            salaryID.setStyle(salaryID.getStyle() + ";-fx-border-color: red;");
-            System.out.println("Invalid Salary ID: " + salaryId);
-        }
-        if (!isValidDate) {
-            SalDate.setStyle(SalDate.getStyle() + ";-fx-border-color: red;");
-            System.out.println("Invalid Date: " + dateText);
-        }
         if (!isValidAmount) {
             SalAmount.setStyle(SalAmount.getStyle() + ";-fx-border-color: red;");
             System.out.println("Invalid Amount: " + amountText);
@@ -172,7 +168,7 @@ public class SalaryController implements Initializable {
         }
 
         // Proceed if all inputs are valid
-        if (isValidID && isValidDate && isValidAmount && isValidEmpID) {
+        if (isValidAmount && isValidEmpID) {
             try {
                 double amount = Double.parseDouble(amountText);
 
@@ -207,8 +203,8 @@ public class SalaryController implements Initializable {
             SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
             String formattedDate = salaryTM.getDate() != null ? dateFormatter.format(salaryTM.getDate()) : "";
 
-            salaryID.setText(salaryTM.getSalaryId());
-            SalDate.setText(formattedDate);
+            salId.setText(salaryTM.getSalaryId());
+            dateLAbel.setText(formattedDate);
             SalAmount.setText(String.valueOf(salaryTM.getAmount()));
             SalEmpId.setValue(salaryTM.getEmployeeId());
 
@@ -219,13 +215,14 @@ public class SalaryController implements Initializable {
         }
 
 
+
     }
 
     @FXML
     void updateAction(ActionEvent event) {
         // Retrieve input values
-        String salaryId = salaryID.getText();
-        String dateText = SalDate.getText();
+        String salaryId = salId.getText();
+        String dateText = dateLAbel.getText();
         String amountText = SalAmount.getText();
         String employeeId = SalEmpId.getValue();
 
@@ -234,25 +231,10 @@ public class SalaryController implements Initializable {
         String amountPattern = "^[0-9]*\\.?[0-9]+$"; // Accepts positive numbers with optional decimal
 
         boolean isValidID = salaryId.matches(idPattern);
-        boolean isValidDate = !dateText.isEmpty(); // Simple non-empty check (you may apply additional date validation)
         boolean isValidAmount = amountText.matches(amountPattern);
-        boolean isValidEmpID = employeeId != null && employeeId.matches(idPattern);
+        boolean isValidEmpID = employeeId.matches(idPattern);
 
-      /*  // Reset styles
-        salaryID.setStyle("-fx-border-color: none;");
-        SalDate.setStyle("-fx-border-color: none;");
-        SalAmount.setStyle("-fx-border-color: none;");
-        SalEmpId.setStyle("-fx-border-color: none;");
-*/
         // Highlight invalid fields
-        if (!isValidID) {
-            salaryID.setStyle(salaryID.getStyle() + ";-fx-border-color: red;");
-            System.out.println("Invalid Salary ID: " + salaryId);
-        }
-        if (!isValidDate) {
-            SalDate.setStyle(SalDate.getStyle() + ";-fx-border-color: red;");
-            System.out.println("Invalid Date: " + dateText);
-        }
         if (!isValidAmount) {
             SalAmount.setStyle(SalAmount.getStyle() + ";-fx-border-color: red;");
             System.out.println("Invalid Amount: " + amountText);
@@ -263,7 +245,7 @@ public class SalaryController implements Initializable {
         }
 
         // Proceed if all inputs are valid
-        if (isValidID && isValidDate && isValidAmount && isValidEmpID) {
+        if (isValidID && isValidAmount && isValidEmpID) {
             try {
                 double amount = Double.parseDouble(amountText);
 
@@ -296,10 +278,8 @@ public class SalaryController implements Initializable {
 
     }
     private void loadEmpIds() throws SQLException {
-        final Connection connection;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/animal_hospital", "root", "Ijse@1234");
+           Connection connection = DBConnection.getInstance().getConnection();
 
             ResultSet rs = connection.createStatement().executeQuery("SELECT emp_id FROM employee");
             ObservableList<String> data = FXCollections.observableArrayList();
@@ -337,17 +317,28 @@ public class SalaryController implements Initializable {
     private void refreshPage() throws SQLException, ClassNotFoundException {
 
         loadTableData();
+        getNextID();
+        loadEmpIds();
 
         save.setDisable(false);
-
         update.setDisable(true);
         delete.setDisable(true);
+        SalAmount.setText("");
+      //  SalEmpId.setValue(null);
 
-        salaryID.setText("");
-        SalDate.setText("");
+    }
+    @FXML
+    void resetAction(ActionEvent event) {
+        getNextID();
+        LocalDate date = LocalDate.now();
+        String formattedDate = date.format(formatter);
+        dateLAbel.setText(formattedDate);
         SalAmount.setText("");
         SalEmpId.setValue(null);
-
+    }
+    public void getNextID(){
+        String nextID = salaryModel.getNextID();
+        salId.setText(nextID);
     }
 
 }

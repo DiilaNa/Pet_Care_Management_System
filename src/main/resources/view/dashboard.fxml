@@ -100,15 +100,7 @@
             <InnerShadow />
          </effect>
       </Button>
-      <Button fx:id="Shedule" alignment="CENTER" layoutX="430.0" layoutY="774.0" mnemonicParsing="false" onAction="#ShedulebtnAction" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="SHEDULE" textFill="WHITE">
-         <font>
-            <Font size="23.0" />
-         </font>
-         <effect>
-            <InnerShadow />
-         </effect>
-      </Button>
-      <Button fx:id="extrsbtn111" alignment="CENTER" layoutX="776.0" layoutY="774.0" mnemonicParsing="false" onAction="#extrsbtnAction" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="Payments" textFill="WHITE">
+      <Button fx:id="Shedule" alignment="CENTER" layoutX="600.0" layoutY="772.0" mnemonicParsing="false" onAction="#ShedulebtnAction" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #d35400; -fx-background-radius: 15;" text="SHEDULE" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font>

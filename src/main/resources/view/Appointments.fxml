@@ -15,7 +15,7 @@
    <children>
       <ImageView fx:id="image" fitHeight="887.0" fitWidth="983.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../../Pictures/animall hosptila/ALL PET.png" />
+            <Image url="@../../../../../../../Pictures/animall%20hospital/ALL%20PET.png" />
          </image>
       </ImageView>
       <Pane layoutX="982.0" prefHeight="887.0" prefWidth="228.0" style="-fx-background-color: black;">

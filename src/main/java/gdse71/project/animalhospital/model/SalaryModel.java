@@ -48,4 +48,23 @@ public class SalaryModel {
     public boolean delete(String salary_id ) throws SQLException, ClassNotFoundException {
         return Util.execute("delete from salary where salary_id=?", salary_id);
     }
+    public String getNextID(){
+        try{
+            ResultSet rst = Util.execute("select salary_id from salary order by salary_id desc limit 1");
+            if (rst.next()) {
+                String lastID = rst.getString(1);
+                String numericPart = lastID.replaceAll("[^0-9]", "");
+                if (numericPart.isEmpty()) {
+                    return "SAL001";
+                }
+                int i = Integer.parseInt(numericPart);
+                int newIndez = i + 1 ;
+                return String.format("SAL%03d",newIndez);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return "SAL001";
+    }
+
 }

@@ -52,4 +52,23 @@ public class EmployeeModel {
     public boolean delete(String emp_id) throws SQLException, ClassNotFoundException {
         return Util.execute("delete from employee where emp_id=?", emp_id);
     }
+    public String getNextID(){
+        try {
+            ResultSet rst = null;
+            rst = Util.execute("select emp_id from employee order by emp_id desc limit 1");
+            if (rst.next()) {
+                String lastId = rst.getString(1);
+                String numericPart = lastId.replaceAll("[^0-9]", "");
+                if (numericPart.isEmpty()) {
+                    return "EMP001";
+                }
+                int i = Integer.parseInt(numericPart);
+                int newIdIndex = i + 1;
+                return String.format("EMP%03d", newIdIndex);
+            }
+        } catch (ClassNotFoundException | NumberFormatException |SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return "EMP001";
+    }
 }

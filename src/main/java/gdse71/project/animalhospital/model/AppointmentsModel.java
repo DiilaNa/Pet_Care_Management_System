@@ -129,7 +129,9 @@ public class AppointmentsModel {
                 petStmt.setString(5, petdto.getPetType());
                 petStmt.executeUpdate();
 
-               // Save payment details
+
+
+                // Save payment details
                 PreparedStatement paymentStmt = connection.prepareStatement("INSERT INTO payment (payment_id, payment_date, payment_method,payment_time) VALUES (?, ?, ?, ?)");
                 paymentStmt.setString(1, paymentDto.getPaymentId());
                 paymentStmt.setString(2, paymentDto.getPaymentDate());
@@ -145,6 +147,7 @@ public class AppointmentsModel {
                 appointmentStmt.setString(4, appointmentsdto.getPayID());
                 appointmentStmt.setString(5, appointmentsdto.getPet_ID());
                 appointmentStmt.executeUpdate();
+
 
                 connection.commit(); // Commit transaction if all inserts are successful
                 return true;

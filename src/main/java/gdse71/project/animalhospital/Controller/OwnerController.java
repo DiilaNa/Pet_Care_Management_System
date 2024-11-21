@@ -43,12 +43,6 @@ public class OwnerController implements Initializable {
     private TextField name;
 
     @FXML
-    private TextField ownerID;
-
-    @FXML
-    private Button savebtn;
-
-    @FXML
     private TableView<OwnerTM> table;
 
     @FXML
@@ -68,6 +62,12 @@ public class OwnerController implements Initializable {
 
     @FXML
     private ImageView imagefromscenebuilderID;
+
+    @FXML
+    private Label ownerIDS;
+
+    @FXML
+    private Button reset;
 
     OwnerModel ownerModel = new OwnerModel();
 
@@ -113,12 +113,10 @@ public class OwnerController implements Initializable {
 
         loadTableData();
 
-        savebtn.setDisable(false);
-
         updatebtn.setDisable(true);
         deletebtn.setDisable(true);
 
-        ownerID.setText("");
+        ownerIDS.setText("");
         name.setText("");
         address.setText("");
         mail.setText("");
@@ -129,12 +127,10 @@ public class OwnerController implements Initializable {
         OwnerTM ownerTM = table.getSelectionModel().getSelectedItem();
 
         if (ownerTM != null) {
-            ownerID.setText(ownerTM.getOwnerId());
+            ownerIDS.setText(ownerTM.getOwnerId());
             name.setText(ownerTM.getOwnerName());
             address.setText(ownerTM.getOwnerAddress());
             mail.setText(ownerTM.getOwnerMail());
-
-            savebtn.setDisable(false);
 
             deletebtn.setDisable(false);
             updatebtn.setDisable(false);
@@ -159,7 +155,7 @@ public class OwnerController implements Initializable {
 
     @FXML
     void deletebtnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
-        String ownerId = ownerID.getText();
+        String ownerId = ownerIDS.getText();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
         Optional<ButtonType> optionalButtonType = alert.showAndWait();
 
@@ -178,13 +174,12 @@ public class OwnerController implements Initializable {
 
     @FXML
     void savebtnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
-        String ownerId = ownerID.getText();
+        String ownerId = ownerIDS.getText();
         String ownerName = name.getText();
         String ownerAddress = address.getText();
         String ownerMail = mail.getText();
 
         // Reset styles
-        ownerID.setStyle(ownerID.getStyle() + ";-fx-border-color: #7367F0;");
         name.setStyle(name.getStyle() + ";-fx-border-color: #7367F0;");
         address.setStyle(address.getStyle() + ";-fx-border-color: #7367F0;");
         mail.setStyle(mail.getStyle() + ";-fx-border-color: #7367F0;");
@@ -234,13 +229,12 @@ public class OwnerController implements Initializable {
 
     @FXML
     void updatebtnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
-        String ownerId = ownerID.getText();
+        String ownerId = ownerIDS.getText();
         String ownerName = name.getText();
         String ownerAddress = address.getText();
         String ownerMail = mail.getText();
 
         // Reset styles
-        ownerID.setStyle(ownerID.getStyle() + ";-fx-border-color: #7367F0;");
         name.setStyle(name.getStyle() + ";-fx-border-color: #7367F0;");
         address.setStyle(address.getStyle() + ";-fx-border-color: #7367F0;");
         mail.setStyle(mail.getStyle() + ";-fx-border-color: #7367F0;");
@@ -283,6 +277,14 @@ public class OwnerController implements Initializable {
                 new Alert(Alert.AlertType.ERROR, "Failed to Update Owner...!").show();
             }
         }
+    }
+    @FXML
+    void resetbtnAction(ActionEvent event) {
+      //  ownerIDS.setText("");
+        name.setText("");
+        address.setText("");
+        mail.setText("");
+
     }
 
 }
