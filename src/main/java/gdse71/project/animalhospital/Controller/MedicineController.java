@@ -54,7 +54,7 @@ public class MedicineController implements Initializable {
     private TextField Mcoondition;
 
     @FXML
-    private TextField Mid;
+    private Label Mid;
 
     @FXML
     private TextField Mname;
@@ -104,6 +104,9 @@ public class MedicineController implements Initializable {
 
     @FXML
     private Button getQty;
+
+    @FXML
+    private Button reset;
 
     MedicineModel medicineModel = new MedicineModel();
 
@@ -281,14 +284,13 @@ public class MedicineController implements Initializable {
     private void refreshPage() throws SQLException, ClassNotFoundException {
 
         loadTableData();
+        getNextMedId();
 
         save.setDisable(false);
         getQty.setDisable(true);
-
         update.setDisable(true);
         delete.setDisable(true);
 
-        Mid.setText("");
         Mname.setText("");
         Mcoondition.setText("");
         Mweight.setText("");
@@ -362,7 +364,8 @@ public class MedicineController implements Initializable {
 
     // Update the quantity in the database
     private void updateMedicineQuantityInDatabase(String medicineId, int updatedQty) {
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/animal_hospital", "root", "Ijse@1234")) {
+        try (
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/animal_hospital", "root", "Ijse@1234")) {
             String sql = "UPDATE medicine SET Qty = ? WHERE medicine_id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, updatedQty);
@@ -371,6 +374,19 @@ public class MedicineController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public void getNextMedId(){
+        String NextMedID = medicineModel.getNextMedid();
+        Mid.setText(NextMedID);
+    }
+    @FXML
+    void reseTAction(ActionEvent event) {
+        getNextMedId();
+        Mname.setText("");
+        Mcoondition.setText("");
+        Mweight.setText("");
+        Mqty.setText("");
+
     }
 
 

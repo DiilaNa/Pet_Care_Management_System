@@ -80,12 +80,7 @@ public class PaymentController implements Initializable {
     private TableColumn<PaymentTM, String> tableTime;
 
     @FXML
-    private ComboBox<String> Combo;
-
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-    @FXML
-    private Button update;
+    private TextField payMethod;
 
     PaymentModel paymentModel = new PaymentModel();
 
@@ -134,85 +129,24 @@ public class PaymentController implements Initializable {
         if (paymentTM != null) {
             payID.setText(paymentTM.getPaymentId());
             payTime.setText(paymentTM.getPaymentTime());
-            Combo.setValue(paymentTM.getPaymentMethodd());
+            payMethod.setText(paymentTM.getPaymentMethodd());
             payDate.setText(paymentTM.getPaymentDate());
 
             delete.setDisable(false);
-            update.setDisable(false);
         }
 
 
     }
 
-    @FXML
-    void updateAction(ActionEvent event) {
-        String paymentIDText = payID.getText();
-        String paymentDateText = LocalDate.now().format(formatter);
-        String paymentMethodText = Combo.getValue();
-        String paymentTimeText = payTime.getText();
-
-        // Validation patterns
-        String idPattern = "^[A-Za-z0-9]+$";
-        String datePattern = "^\\d{4}-\\d{2}-\\d{2}$"; // Format YYYY-MM-DD
-        String timePattern = "^\\d{2}:\\d{2}:\\d{2}$"; // Format HH:MM:SS
-
-        // Perform validation
-        boolean isValidID = paymentIDText.matches(idPattern);
-        boolean isValidDate = paymentDateText.matches(datePattern);
-        boolean isValidTime = paymentTimeText.matches(timePattern);
-
-        // Reset styles
-        payID.setStyle("-fx-border-color: none;");
-        payDate.setStyle("-fx-border-color: none;");
-        payTime.setStyle("-fx-border-color: none;");
-
-        // Apply error styles if validation fails
-        if (!isValidID) {
-            payID.setStyle(payID.getStyle() + ";-fx-border-color: red;");
-            System.out.println("Invalid Payment ID: " + paymentIDText);
-        }
-        if (!isValidDate) {
-            payDate.setStyle(payDate.getStyle() + ";-fx-border-color: red;");
-            System.out.println("Invalid Payment Date: " + paymentDateText);
-        }
-        if (!isValidTime) {
-            payTime.setStyle(payTime.getStyle() + ";-fx-border-color: red;");
-            System.out.println("Invalid Payment Time: " + paymentTimeText);
-        }
-
-        if (isValidID  && isValidDate && isValidTime && !paymentMethodText.isEmpty()) {
-            // Create PaymentDto object
-            PaymentDto paymentDto = new PaymentDto(paymentIDText, paymentDateText, paymentMethodText, paymentTimeText);
-
-            try {
-                // Save the payment record
-                boolean isSaved = paymentModel.update(paymentDto);
-                if (isSaved) {
-                    new Alert(Alert.AlertType.INFORMATION, "Payment record saved successfully!").show();
-                    refreshPage();
-                } else {
-                    new Alert(Alert.AlertType.ERROR, "Failed to save payment record.").show();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                new Alert(Alert.AlertType.ERROR, "An error occurred while saving the payment record.").show();
-            }
-        } else {
-            new Alert(Alert.AlertType.ERROR, "Please fix the highlighted errors before saving.").show();
-        }
-
-    }
     private void refreshPage() throws SQLException, ClassNotFoundException {
 
         loadTableData();
-
-        update.setDisable(true);
         delete.setDisable(true);
 
         payID.setText("");
         payDate.setText("");
         payTime.setText("");
-        Combo.setItems(FXCollections.observableArrayList("Cash", "Card"));
+        payMethod.setText("");
     }
     private void loadTableData() throws SQLException, ClassNotFoundException {
 

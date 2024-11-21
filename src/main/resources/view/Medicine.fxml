@@ -16,7 +16,7 @@
    <children>
       <ImageView fx:id="image" fitHeight="870.0" fitWidth="1200.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../../Pictures/animall hosptila/Medicinee.png" />
+            <Image url="@../../../../../../../Pictures/animall%20hospital/Medicinee.png" />
          </image>
       </ImageView>
       <Label layoutX="254.0" layoutY="165.0" text="ID">
@@ -44,7 +44,6 @@
             <Font name="DejaVu Sans Bold" size="26.0" />
          </font>
       </Label>
-      <TextField fx:id="Mid" layoutX="434.0" layoutY="165.0" prefHeight="31.0" prefWidth="186.0" />
       <TextField fx:id="Mname" layoutX="434.0" layoutY="220.0" prefHeight="31.0" prefWidth="186.0" />
       <TextField fx:id="Mcoondition" layoutX="434.0" layoutY="283.0" prefHeight="31.0" prefWidth="186.0" />
       <TextField fx:id="Mweight" layoutX="434.0" layoutY="345.0" prefHeight="31.0" prefWidth="186.0" />
@@ -95,5 +94,30 @@
          </effect>
       </Button>
       <TextField fx:id="getQTY" layoutX="968.0" layoutY="268.0" prefHeight="31.0" prefWidth="186.0" />
+      <Label fx:id="Mid" layoutX="436.0" layoutY="165.0" text="ID">
+         <font>
+            <Font name="DejaVu Sans Bold" size="26.0" />
+         </font>
+      </Label>
+      <Button fx:id="reset" layoutX="968.0" layoutY="406.0" mnemonicParsing="false" onAction="#reseTAction" prefHeight="45.0" prefWidth="141.0" style="-fx-background-color: d35400; -fx-background-radius: 12;" text="RESET" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font>
+         <effect>
+            <ColorAdjust contrast="0.33" hue="-0.02" saturation="-0.03" />
+         </effect>
+      </Button>
+      <Label layoutX="254.0" layoutY="121.0" text="ID">
+         <font>
+            <Font name="DejaVu Sans Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="653.0" layoutY="121.0" text="ID">
+         <font>
+            <Font name="DejaVu Sans Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Mname1" layoutX="427.0" layoutY="121.0" prefHeight="31.0" prefWidth="186.0" />
+      <TextField fx:id="Mname11" layoutX="968.0" layoutY="113.0" prefHeight="31.0" prefWidth="186.0" />
    </children>
 </AnchorPane>

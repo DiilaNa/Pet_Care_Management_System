@@ -47,4 +47,22 @@ public class ServiceModel {
         public boolean deleteService(String service_id) throws SQLException, ClassNotFoundException {
             return Util.execute("delete from service_booking where service_id=?", service_id);
         }
+        public String getNextID() {
+            try {
+                ResultSet rst = Util.execute("select service_id from service_booking order by service_id desc limit 1");
+                if (rst.next()) {
+                    String lastID = rst.getString(1);
+                    String numericPart = lastID.replaceAll("[^0-9]", "");
+                    if (numericPart.isEmpty()) {
+                        return "SVC001";
+                    }
+                    int i = Integer.parseInt(numericPart);
+                    int newIndex = i + 1;
+                    return String.format("SVC%03d", newIndex);
+                }
+            } catch (RuntimeException | ClassNotFoundException | SQLException e) {
+                throw new RuntimeException(e);
+            }
+            return "SVS001";
+        }
 }

@@ -61,6 +61,26 @@ public class MedicineModel {
     public boolean delete(String medicineId) throws SQLException, ClassNotFoundException {
        return Util.execute("DELETE FROM medicine WHERE medicine_id = ?", medicineId);
     }
+    public String getNextMedid(){
+        try{
+            ResultSet rst = Util.execute("select medicine_id from medicine order by medicine_id desc limit 1");
+            if (rst.next()) {
+                String lastID = rst.getString(1);
+                String numericPart = lastID.replaceAll("[^0-9]", "");
+                if (numericPart.isEmpty()) {
+                    return "MED001";
+                }
+                int i = Integer.parseInt(numericPart);
+                int newIndex = i + 1;
+                return String.format("MED%03d", newIndex);
+            }
+
+        } catch (RuntimeException | SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return "MED001";
+
+    }
    /* public boolean updateQuantity(double updatedQty) throws SQLException, ClassNotFoundException {
         String query = "UPDATE medicine SET Qoh = ? WHERE medicine_id = ?";
         try (Connection connection = DBConnection.getInstance().getConnection();

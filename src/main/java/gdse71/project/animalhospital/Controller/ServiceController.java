@@ -49,9 +49,6 @@ public class ServiceController implements Initializable {
     private Button save;
 
     @FXML
-    private TextField serviceID;
-
-    @FXML
     private TableView<ServiceTM> table;
 
     @FXML
@@ -71,6 +68,13 @@ public class ServiceController implements Initializable {
 
     @FXML
     private TextField serviceType;
+
+
+    @FXML
+    private Button reset;
+
+    @FXML
+    private Label serviceID;
 
     ServiceModel serviceModel = new ServiceModel();
 
@@ -233,15 +237,26 @@ public class ServiceController implements Initializable {
     private void refreshPage() throws SQLException, ClassNotFoundException {
 
         loadTableData();
+        getNextServeID();
 
         save.setDisable(false);
-
         update.setDisable(true);
         delete.setDisable(true);
 
-        serviceID.setText("");
         serviceType.setText("");
         duration.setText("");
 
+    }
+    public void getNextServeID(){
+        String servisiD = serviceModel.getNextID();
+        serviceID.setText(servisiD);
+    }
+
+    @FXML
+    void restAction(ActionEvent event) {
+        getNextServeID();
+        loadTableData();
+        serviceType.setText("");
+        duration.setText("");
     }
 }

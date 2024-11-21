@@ -46,8 +46,7 @@ public class ScheduleModel {
     }
     public String  getNextScheduleID() throws SQLException, ClassNotFoundException {
         try {
-            ResultSet rst = null;
-            rst = Util.execute("select schedule_id from schedule order by schedule_id desc limit 1");
+            ResultSet rst = Util.execute("select schedule_id from schedule order by schedule_id desc limit 1");
             if (rst.next()) {
                 String lastId = rst.getString(1); // Last appointment ID
                 String numericPart = lastId.replaceAll("[^0-9]", ""); // Extract numeric part only
