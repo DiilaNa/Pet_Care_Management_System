@@ -293,11 +293,9 @@ public class PetRecordController implements Initializable {
 
     }
     private void loadPetIds() throws SQLException {
-        final Connection connection;
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/animal_hospital", "root", "Ijse@1234");
 
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
             ResultSet rs = connection.createStatement().executeQuery("SELECT pet_id FROM pet");
             ObservableList<String> data = FXCollections.observableArrayList();
 

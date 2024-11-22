@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,21 +14,16 @@
    <children>
       <ImageView fx:id="image" fitHeight="880.0" fitWidth="1200.0" layoutY="-10.0" pickOnBounds="true" style="\\: true;">
          <image>
-            <Image url="@../../../../../../../Pictures/animall hosptila/login.png" />
+            <Image url="@../../../../../../../Pictures/animal%20hospital/v.jpeg" />
          </image>
       </ImageView>
-      <Label layoutX="323.0" layoutY="31.0" prefHeight="109.0" prefWidth="682.0" text="PETS &amp; VETS ANIMAL HOSPITAL">
-         <font>
-            <Font name="Dyuthi Regular" size="50.0" />
-         </font>
-      </Label>
-      <Pane layoutX="379.0" layoutY="183.0" opacity="0.84" prefHeight="552.0" prefWidth="515.0" style="-fx-background-color: #e67e22; -fx-background-radius: 12;">
+      <Pane layoutX="363.0" layoutY="159.0" prefHeight="552.0" prefWidth="515.0" style="-fx-background-color: #e67e22; -fx-background-radius: 12;">
          <children>
-            <TextField fx:id="userName" layoutX="47.0" layoutY="184.0" prefHeight="49.0" prefWidth="403.0" promptText="user name" style="-fx-background-radius: 12;">
+            <TextField fx:id="userName" layoutX="47.0" layoutY="184.0" prefHeight="49.0" prefWidth="403.0" promptText="user_name" style="-fx-background-radius: 11;">
                <font>
                   <Font size="20.0" />
                </font></TextField>
-            <TextField fx:id="passWord" layoutX="47.0" layoutY="283.0" prefHeight="49.0" prefWidth="403.0" promptText="Password" style="-fx-background-radius: 12;">
+            <TextField fx:id="passWord" layoutX="47.0" layoutY="283.0" prefHeight="49.0" prefWidth="403.0" promptText="Password" style="-fx-background-radius: 11;">
                <font>
                   <Font size="20.0" />
                </font></TextField>
@@ -45,6 +41,9 @@
                <font>
                   <Font name="Rekha" size="23.0" />
                </font>
+               <effect>
+                  <InnerShadow />
+               </effect>
             </Button>
             <Label layoutX="11.0" layoutY="6.0" prefHeight="20.0" prefWidth="511.0" text="--------------------------------WELCOME---------------------------------------" wrapText="true">
                <font>
@@ -53,5 +52,10 @@
             </Label>
          </children>
       </Pane>
+      <Label layoutX="235.0" layoutY="42.0" text="PETS &amp; VETS ANIMAL HOSPITAL" textFill="#0d0909">
+         <font>
+            <Font name="DejaVu Sans Bold Oblique" size="44.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

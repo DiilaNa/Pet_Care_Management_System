@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,7 +15,7 @@
    <children>
       <ImageView fx:id="imagefromscenebuilderID" fitHeight="928.0" fitWidth="1202.0" layoutY="-2.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../../Pictures/animall hosptila/ALL PET.png" />
+            <Image url="@../../../../../../../Pictures/animal%20hospital/ALL%20PET.png" />
          </image>
       </ImageView>
       <Label layoutX="390.0" layoutY="53.0" text="OWNER DETAILS">
@@ -63,16 +64,25 @@
          <font>
             <Font name="Dyuthi Regular" size="23.0" />
          </font>
+         <effect>
+            <DropShadow height="15.07" radius="3.2675" width="0.0" />
+         </effect>
       </Button>
       <Button fx:id="updatebtn" layoutX="965.0" layoutY="237.0" mnemonicParsing="false" onAction="#updatebtnAction" prefHeight="54.0" prefWidth="168.0" style="-fx-background-radius: 25; -fx-background-color: #d35400;" text="UPDATE" textFill="#f2ebeb">
          <font>
             <Font name="Dyuthi Regular" size="23.0" />
          </font>
+         <effect>
+            <DropShadow radius="4.75" width="0.0" />
+         </effect>
       </Button>
       <Button fx:id="deletebtn" layoutX="965.0" layoutY="358.0" mnemonicParsing="false" onAction="#deletebtnAction" prefHeight="52.0" prefWidth="168.0" style="-fx-background-radius: 25; -fx-background-color: #d35400;" text="DELETE" textFill="#e8e4e4">
          <font>
             <Font name="Dyuthi Regular" size="22.0" />
          </font>
+         <effect>
+            <DropShadow height="12.1" radius="2.525" width="0.0" />
+         </effect>
       </Button>
    </children>
 </AnchorPane>

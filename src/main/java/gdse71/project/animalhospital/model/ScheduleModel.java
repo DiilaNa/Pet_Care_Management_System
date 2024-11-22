@@ -1,8 +1,11 @@
 package gdse71.project.animalhospital.model;
 
 import gdse71.project.animalhospital.CrudUtil.Util;
+import gdse71.project.animalhospital.dto.EmpSheduleDto;
 import gdse71.project.animalhospital.dto.ScheduleDto;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -24,13 +27,32 @@ public class ScheduleModel {
         }
         return servicedtos;
     }
-    public boolean save(ScheduleDto scheduleDto) throws SQLException, ClassNotFoundException {
-        return Util.execute(
-                "insert into schedule values (?,?,?)",
-                scheduleDto.getScheduleID(),
-                scheduleDto.getDate(),
-                scheduleDto.getTime()
-        );
+    public boolean save(ScheduleDto scheduleDto, EmpSheduleDto empSheduleDto) throws SQLException, ClassNotFoundException {
+        Connection connection = null;
+        try{
+            connection = Util.getConnection();
+            connection.setAutoCommit(false);
+
+            PreparedStatement scheduleStatement = connection.prepareStatement("INSERT INTO schedule (schedule_id, schedule_date,schedule_time ) VALUES (?,?,?) ");
+            scheduleStatement.setString(1,scheduleDto.getScheduleID());
+            scheduleStatement.setString(2,scheduleDto.getDate());
+            scheduleStatement.setString(3,scheduleDto.getTime());
+            scheduleStatement.executeUpdate();
+
+            PreparedStatement empStatemnt = connection.prepareStatement("INSERT INTO employee_schedule(e_id,s_id) VALUES (?,?) ");
+            empStatemnt.setString(1,empSheduleDto.getEmpid());
+            empStatemnt.setString(2, empSheduleDto.getSid());
+            empStatemnt.executeUpdate();
+
+            connection.commit();
+            return true;
+        }catch (SQLException e){
+            if(connection != null){
+                connection.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        }
     }
     public boolean update(ScheduleDto scheduleDto) throws SQLException, ClassNotFoundException {
         return Util.execute(
@@ -41,8 +63,30 @@ public class ScheduleModel {
         );
     }
 
-    public boolean delete(String schedule_id) throws SQLException, ClassNotFoundException {
-        return Util.execute("delete from schedule where schedule_id=?", schedule_id);
+    public boolean delete(String schedule_id,String eids) throws SQLException, ClassNotFoundException {
+       Connection connection = null;
+       try{
+           connection = Util.getConnection();
+           connection.setAutoCommit(false);
+
+           PreparedStatement schedulestmnt = connection.prepareStatement("DELETE FROM schedule WHERE schedule_id=?");
+           schedulestmnt.setString(1,schedule_id);
+           schedulestmnt.executeUpdate();
+
+           PreparedStatement empstmnt = connection.prepareStatement("DELETE FROM employee_schedule WHERE e_id=?");
+           empstmnt.setString(1,eids);
+           empstmnt.executeUpdate();
+
+           connection.commit();
+           return true;
+
+       }catch (SQLException e){
+           if(connection != null){
+               connection.rollback();
+           }
+           e.printStackTrace();
+           return false;
+       }
     }
     public String  getNextScheduleID() throws SQLException, ClassNotFoundException {
         try {

@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,7 +16,7 @@
    <children>
       <ImageView fx:id="image" fitHeight="900.0" fitWidth="1200.0" opacity="0.9" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../../Pictures/animall hosptila/ALL PET.png" />
+            <Image url="@../../../../../../../Pictures/animal%20hospital/ALL%20PET.png" />
          </image>
       </ImageView>
       <Label layoutX="450.0" layoutY="41.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="51.0" prefWidth="409.0" text="PET HEALTH RECORDS">
@@ -61,32 +62,47 @@
       <TextField fx:id="weight" layoutX="415.0" layoutY="193.0" prefHeight="29.0" prefWidth="258.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;" />
       <TextField fx:id="status" layoutX="415.0" layoutY="264.0" prefHeight="29.0" prefWidth="258.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;" />
       <TextField fx:id="desc" layoutX="415.0" layoutY="329.0" prefHeight="29.0" prefWidth="258.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;" />
-      <Button fx:id="save" layoutX="55.0" layoutY="394.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="41.0" prefWidth="104.0" style="-fx-background-radius: 23; -fx-background-color: #d35400;" text="SAVE" textFill="WHITE">
+      <Button fx:id="save" layoutX="55.0" layoutY="394.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="41.0" prefWidth="121.0" style="-fx-background-radius: 12; -fx-background-color: #d35400;" text="SAVE" textFill="WHITE">
          <font>
             <Font name="DejaVu Sans Mono Bold" size="20.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
-      <Button fx:id="delete" layoutX="227.0" layoutY="394.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="41.0" prefWidth="104.0" style="-fx-background-radius: 23; -fx-background-color: #d35400;" text="DELETE" textFill="#fcfcfc">
+      <Button fx:id="delete" layoutX="227.0" layoutY="394.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="41.0" prefWidth="121.0" style="-fx-background-radius: 12; -fx-background-color: #d35400;" text="DELETE" textFill="#fcfcfc">
          <font>
             <Font name="DejaVu Sans Mono Bold" size="20.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
-      <Button fx:id="update" layoutX="398.0" layoutY="394.0" mnemonicParsing="false" onAction="#updateAction" prefHeight="41.0" prefWidth="104.0" style="-fx-background-radius: 23; -fx-background-color: #d35400;" text="UPDATE" textFill="WHITE">
+      <Button fx:id="update" layoutX="398.0" layoutY="394.0" mnemonicParsing="false" onAction="#updateAction" prefHeight="41.0" prefWidth="121.0" style="-fx-background-radius: 12; -fx-background-color: #d35400;" text="UPDATE" textFill="WHITE">
          <font>
             <Font name="DejaVu Sans Mono Bold" size="20.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
       <Button fx:id="back" layoutX="21.0" layoutY="29.0" mnemonicParsing="false" onAction="#backAction" style="-fx-background-color: black;" text="BACK" textFill="WHITE" />
-      <Button fx:id="grn" layoutX="556.0" layoutY="394.0" mnemonicParsing="false" onAction="#grnAction" prefHeight="41.0" prefWidth="215.0" style="-fx-background-radius: 23; -fx-background-color: #d35400;" text="GENARATE RECORD" textFill="#fcfcfc">
+      <Button fx:id="grn" layoutX="574.0" layoutY="394.0" mnemonicParsing="false" onAction="#grnAction" prefHeight="41.0" prefWidth="215.0" style="-fx-background-radius: 12; -fx-background-color: #d35400;" text="GENARATE RECORD" textFill="#fcfcfc">
          <font>
             <Font name="DejaVu Sans Mono Bold" size="20.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
-      <ComboBox fx:id="prtID" layoutX="857.0" layoutY="139.0" onAction="#prtIDACTION" prefHeight="24.0" prefWidth="215.0" promptText="select a pet id " />
-      <Button fx:id="reset" layoutX="849.0" layoutY="394.0" mnemonicParsing="false" onAction="#reserAction" prefHeight="41.0" prefWidth="104.0" style="-fx-background-radius: 23; -fx-background-color: #d35400;" text="RESET" textFill="WHITE">
+      <ComboBox fx:id="prtID" layoutX="857.0" layoutY="139.0" onAction="#prtIDACTION" prefHeight="24.0" prefWidth="215.0" promptText="select a pet id " style="-fx-background-color: transparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;" />
+      <Button fx:id="reset" layoutX="849.0" layoutY="394.0" mnemonicParsing="false" onAction="#reserAction" prefHeight="41.0" prefWidth="121.0" style="-fx-background-radius: 12; -fx-background-color: #d35400;" text="RESET" textFill="WHITE">
          <font>
             <Font name="DejaVu Sans Mono Bold" size="20.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
    </children>
 </AnchorPane>

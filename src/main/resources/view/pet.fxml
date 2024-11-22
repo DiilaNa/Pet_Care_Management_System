@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,7 +16,7 @@
    <children>
       <ImageView fx:id="image" fitHeight="900.0" fitWidth="1200.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../../Pictures/animall hosptila/ALL PET.png" />
+            <Image url="@../../../../../../../Pictures/animal%20hospital/ALL%20PET.png" />
          </image>
       </ImageView>
       <Label fx:id="petIds" layoutX="833.0" layoutY="184.0" text="PET ID">
@@ -42,15 +43,24 @@
       <Button fx:id="gr" layoutX="82.0" layoutY="402.0" mnemonicParsing="false" onAction="#genReport" prefHeight="40.0" prefWidth="267.0" style="-fx-background-radius: 15; -fx-background-color: #d35400;" text="VIEW  PET REPCORDS" textFill="WHITE">
          <font>
             <Font size="21.0" />
-         </font></Button>
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
       <Button fx:id="update" layoutX="435.0" layoutY="402.0" mnemonicParsing="false" onAction="#updateAction" prefHeight="40.0" prefWidth="114.0" style="-fx-background-radius: 15; -fx-background-color: #d35400;" text="UPDATE" textFill="WHITE">
          <font>
             <Font size="21.0" />
-         </font></Button>
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
       <Button fx:id="delete" layoutX="622.0" layoutY="402.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="40.0" prefWidth="133.0" style="-fx-background-radius: 15; -fx-background-color: #d35400;" text="DELETE" textFill="WHITE">
          <font>
             <Font size="21.0" />
-         </font></Button>
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
       <Button fx:id="backID" layoutX="20.0" layoutY="30.0" mnemonicParsing="false" onAction="#backIDAction" style="-fx-background-color: black; -fx-background-radius: 21;" text="Back" textFill="WHITE" underline="true" />
       <TextField fx:id="breedtxt" layoutX="467.0" layoutY="251.0" prefHeight="29.0" prefWidth="267.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;" />
       <TabPane layoutX="14.0" layoutY="369.0" />
@@ -78,6 +88,9 @@
          <font>
             <Font size="21.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
    </children>
 </AnchorPane>

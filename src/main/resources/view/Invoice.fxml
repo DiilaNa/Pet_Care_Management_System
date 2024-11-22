@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,25 +17,34 @@
    <children>
       <ImageView fx:id="image" fitHeight="907.0" fitWidth="991.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../../Pictures/animall%20hosptila/ALL%20PET.png" />
+            <Image url="@../../../../../../../Pictures/animal%20hospital/ALL%20PET.png" />
          </image>
       </ImageView>
       <Pane layoutX="991.0" prefHeight="907.0" prefWidth="211.0" style="-fx-background-color: black;">
          <children>
-            <Button fx:id="save" layoutX="64.0" layoutY="108.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="40.0" prefWidth="104.0" style="-fx-background-radius: 12; -fx-background-color: d35400;" text="SAVE" textFill="WHITE">
+            <Button fx:id="save" layoutX="39.0" layoutY="105.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="49.0" prefWidth="153.0" style="-fx-background-radius: 12; -fx-background-color: d35400;" text="SAVE" textFill="WHITE">
                <font>
-                  <Font name="DejaVu Sans Mono Bold Oblique" size="21.0" />
+                  <Font name="DejaVu Sans Mono Bold Oblique" size="24.0" />
                </font>
+               <effect>
+                  <ColorAdjust brightness="0.12" contrast="0.14" />
+               </effect>
             </Button>
-            <Button fx:id="update" layoutX="64.0" layoutY="209.0" mnemonicParsing="false" onAction="#updateAction" style="-fx-background-radius: 12; -fx-background-color: d35400;" text="UPDATE" textFill="WHITE">
+            <Button fx:id="update" layoutX="39.0" layoutY="205.0" mnemonicParsing="false" onAction="#updateAction" prefHeight="49.0" prefWidth="153.0" style="-fx-background-radius: 12; -fx-background-color: d35400;" text="UPDATE" textFill="WHITE">
                <font>
-                  <Font name="DejaVu Sans Mono Bold Oblique" size="21.0" />
+                  <Font name="DejaVu Sans Mono Bold Oblique" size="26.0" />
                </font>
+               <effect>
+                  <ColorAdjust brightness="0.12" contrast="0.12" />
+               </effect>
             </Button>
-            <Button fx:id="delete" layoutX="64.0" layoutY="303.0" mnemonicParsing="false" onAction="#deleteAction" style="-fx-background-radius: 12; -fx-background-color: d35400;" text="DELETE" textFill="WHITE">
+            <Button fx:id="delete" layoutX="39.0" layoutY="305.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="49.0" prefWidth="153.0" style="-fx-background-radius: 12; -fx-background-color: d35400;" text="DELETE" textFill="WHITE">
                <font>
-                  <Font name="DejaVu Sans Mono Bold Oblique" size="21.0" />
+                  <Font name="DejaVu Sans Mono Bold Oblique" size="26.0" />
                </font>
+               <effect>
+                  <ColorAdjust brightness="0.12" contrast="0.14" />
+               </effect>
             </Button>
          </children>
       </Pane>
@@ -63,8 +73,8 @@
             <Font name="DejaVu Sans Bold" size="26.0" />
          </font>
       </Label>
-      <TextField fx:id="paymentInvName" layoutX="802.0" layoutY="129.0" prefHeight="31.0" prefWidth="190.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;" />
-      <TableView fx:id="table" layoutY="463.0" onMouseClicked="#tableClick" opacity="0.88" prefHeight="447.0" prefWidth="1202.0" style="-fx-background-color: f39c12;">
+      <TextField fx:id="paymentInvName" layoutX="792.0" layoutY="130.0" prefHeight="31.0" prefWidth="190.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;" />
+      <TableView fx:id="table" layoutY="463.0" onMouseClicked="#tableClick" opacity="0.89" prefHeight="447.0" prefWidth="1202.0" style="-fx-background-color: f39c12;">
         <columns>
             <TableColumn fx:id="tablePaymenID" prefWidth="360.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="PAYMENT ID" />
           <TableColumn fx:id="tableName" prefWidth="290.0" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;" text="NAME" />
@@ -78,7 +88,7 @@
             <Font name="DejaVu Sans Bold" size="26.0" />
          </font>
       </Label>
-      <ComboBox fx:id="paymenttID" layoutX="441.0" layoutY="133.0" prefHeight="24.0" prefWidth="200.0" />
+      <ComboBox fx:id="paymenttID" layoutX="441.0" layoutY="133.0" prefHeight="24.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;" />
       <Label fx:id="defaultPrice" layoutX="454.0" layoutY="288.0" text="INVOICE NO">
          <font>
             <Font name="DejaVu Sans Bold" size="26.0" />

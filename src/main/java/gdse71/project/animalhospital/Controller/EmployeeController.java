@@ -1,5 +1,7 @@
 package gdse71.project.animalhospital.Controller;
 
+import gdse71.project.animalhospital.db.DBConnection;
+import gdse71.project.animalhospital.dto.Docdto;
 import gdse71.project.animalhospital.dto.Employeedto;
 import gdse71.project.animalhospital.dto.PetTm.EmployeeTM;
 import gdse71.project.animalhospital.model.EmployeeModel;
@@ -19,6 +21,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -76,6 +80,9 @@ public class EmployeeController implements Initializable {
     @FXML
     private Button reset;
 
+    @FXML
+    private ComboBox<String> appt;
+
     EmployeeModel employeeModel = new EmployeeModel();
 
     @FXML
@@ -95,15 +102,16 @@ public class EmployeeController implements Initializable {
 
     @FXML
     void deleteAction(ActionEvent event) {
-        EmployeeTM selectedEmployee = table.getSelectionModel().getSelectedItem();
-        if (selectedEmployee == null) {
+        String employeeID = empId.getText();
+        String selectedAptId = appt.getValue();
+        if (selectedAptId == null && employeeID == null) {
             new Alert(Alert.AlertType.WARNING, "Please select an employee to delete.").show();
             return;
         }
 
-        String employeeID = selectedEmployee.getEmployeeId();
+
         try {
-            boolean isDeleted = employeeModel.delete(employeeID);
+            boolean isDeleted = employeeModel.delete(employeeID,selectedAptId);
             if (isDeleted) {
                 refreshPage();
                 new Alert(Alert.AlertType.INFORMATION, "Employee deleted successfully!").show();
@@ -124,6 +132,7 @@ public class EmployeeController implements Initializable {
         String employeeDuty = duty.getText();
         String employeeAddress = address.getText();
         String employeeContact = contact.getText();
+        String appointmentid = appt.getValue();
 
         String namePattern = "^[A-Za-z\\s]+$";
         String dutyPattern = "^[A-Za-z\\s]+$";
@@ -152,16 +161,11 @@ public class EmployeeController implements Initializable {
         }
 
         if (isValidName && isValidDuty && isValidAddress && isValidContact) {
-            Employeedto employeedto = new Employeedto(
-                    employeeID,
-                    employeeName,
-                    employeeDuty,
-                    employeeAddress,
-                    employeeContact
-            );
+            Employeedto employeedto = new Employeedto(employeeID, employeeName, employeeDuty, employeeAddress, employeeContact);
+            Docdto docdto = new Docdto(employeeID,appointmentid);
 
             try {
-                boolean isSaved = employeeModel.save(employeedto);
+                boolean isSaved = employeeModel.save(employeedto,docdto);
                 if (isSaved) {
                     refreshPage();
                     new Alert(Alert.AlertType.INFORMATION, "Employee saved successfully!").show();
@@ -303,6 +307,7 @@ public class EmployeeController implements Initializable {
         delete.setDisable(true);
 
        loadNextID();
+        loadaptIds();
         empNAme.setText("");
         duty.setText("");
         address.setText("");
@@ -311,8 +316,9 @@ public class EmployeeController implements Initializable {
     }
 
     @FXML
-    void resetAction(ActionEvent event) {
+    void resetAction(ActionEvent event) throws SQLException {
         loadNextID();
+        loadaptIds();
         empNAme.setText("");
         duty.setText("");
         address.setText("");
@@ -320,9 +326,24 @@ public class EmployeeController implements Initializable {
 
     }
     public void loadNextID()  {
-        String nextId = null;
-        nextId = employeeModel.getNextID();
+        String nextId = employeeModel.getNextID();
         empId.setText(nextId);
 
     }
+    private void loadaptIds() throws SQLException {
+
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            ResultSet rs = connection.createStatement().executeQuery("SELECT appointment_id FROM appointments");
+            ObservableList<String> data = FXCollections.observableArrayList();
+
+            while (rs.next()) {
+                data.add(rs.getString("appointment_id"));
+            }
+            appt.setItems(data);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

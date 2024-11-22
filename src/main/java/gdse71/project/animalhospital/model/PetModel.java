@@ -74,29 +74,5 @@ public class PetModel {
             throw new RuntimeException(e);
         }
     }
-  /*  public Petdto findById(String selectedPetId)  {
-        ResultSet rst = null;
-        try {
-            rst = Util.execute("select * from pet where pet_id=?", selectedPetId);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
 
-        try {
-            if (rst.next()) {
-                return new Petdto(
-                        rst.getString(1),  // Customer ID
-                        rst.getString(2),  // Name
-                        rst.getString(3),  // NIC
-                        rst.getString(4),  // Email
-                        rst.getString(5)   // Phone
-                );
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return null;
-    }*/
 }

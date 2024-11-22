@@ -13,5 +13,4 @@ public class MedicineDto {
     private String MedicineName;
     private String MedicineCondition;
     private Double MedicineWeight;
-    private int Quantity;
 }

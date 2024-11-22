@@ -1,5 +1,8 @@
 package gdse71.project.animalhospital.Controller;
 
+import gdse71.project.animalhospital.CrudUtil.Util;
+import gdse71.project.animalhospital.db.DBConnection;
+import gdse71.project.animalhospital.dto.EmpSheduleDto;
 import gdse71.project.animalhospital.dto.PetTm.ScheduleTM;
 import gdse71.project.animalhospital.dto.ScheduleDto;
 import gdse71.project.animalhospital.model.ScheduleModel;
@@ -19,6 +22,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -81,6 +86,13 @@ public class ScheduleController implements Initializable {
     @FXML
     private Button update;
 
+
+    @FXML
+    private ComboBox<String> empIds;
+
+    @FXML
+    private Label empName;
+
    ScheduleModel scheduleModel = new ScheduleModel();
 
     @FXML
@@ -95,6 +107,8 @@ public class ScheduleController implements Initializable {
 
             delete.setDisable(false);
             update.setDisable(false);
+            empIds.setValue("");
+            empName.setText("");
         }
 
     }
@@ -116,19 +130,33 @@ public class ScheduleController implements Initializable {
     @FXML
     void deleteAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String Id = sheduleID.getText();
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
-        Optional<ButtonType> optionalButtonType = alert.showAndWait();
+        String id = empIds.getValue();
 
-        if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
+        if (id == null && Id == null) {
+            new Alert(Alert.AlertType.ERROR, "Please select an ID", ButtonType.OK).show();
 
-            boolean isDeleted = scheduleModel.delete(Id);
-            if (isDeleted) {
-                refreshPage();
-                new Alert(Alert.AlertType.INFORMATION, "  Record deleted...!").show();
-            } else {
-                new Alert(Alert.AlertType.ERROR, "Fail to delete ...!").show();
+        }else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
+            Optional<ButtonType> optionalButtonType = alert.showAndWait();
+            if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
+                try {
+                    boolean isDeleted = scheduleModel.delete(Id,id);
+                    if (isDeleted) {
+                        refreshPage();
+                        new Alert(Alert.AlertType.INFORMATION, "  Record deleted...!").show();
+                    } else {
+                        new Alert(Alert.AlertType.ERROR, "Fail to delete ...!").show();
+                    }
+
+
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
             }
+
+
         }
+
     }
 
     @FXML
@@ -143,6 +171,7 @@ public class ScheduleController implements Initializable {
         String ScheduleId = sheduleID.getText();
         String Date = datetxt.getText();
         String Time = timeTxt.getText();
+        String employeeid = empIds.getValue();
 
        /* String datePattern = ^\d{4}:(0[1-9]|1[0-2]):(0[1-9]|[12]\d|3[01])$
 
@@ -164,12 +193,9 @@ public class ScheduleController implements Initializable {
      //   if ( isValidDate && isValidTime) {
 
             try {
-            ScheduleDto scheduleDto = new ScheduleDto(
-                    ScheduleId,
-                    Date,
-                    Time
-            );
-            boolean isSaved = scheduleModel.save(scheduleDto);
+            ScheduleDto scheduleDto = new ScheduleDto(ScheduleId, Date, Time);
+            EmpSheduleDto empSheduleDto = new EmpSheduleDto(employeeid,ScheduleId);
+            boolean isSaved = scheduleModel.save(scheduleDto,empSheduleDto);
                 if (isSaved) {
                     refreshPage();
                     new Alert(Alert.AlertType.INFORMATION, "  Record saved...!").show();
@@ -273,6 +299,7 @@ public class ScheduleController implements Initializable {
     private void refreshPage() throws SQLException, ClassNotFoundException {
 
         loadTableData();
+        loadEmpID();
 
         save.setDisable(false);
         reset.setDisable(false);
@@ -283,6 +310,41 @@ public class ScheduleController implements Initializable {
         sheduleID.setText("");
         datetxt.setText("");
         timeTxt.setText("");
+
+    }
+    public void loadEmpID() {
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            ResultSet rst = connection.createStatement().executeQuery("select emp_id from employee");
+            ObservableList<String> data = FXCollections.observableArrayList();
+
+            while (rst.next()) {
+                data.add(rst.getString("emp_id"));
+            }
+            empIds.setItems(data);
+        } catch (ClassNotFoundException |SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void empAction(ActionEvent event) {
+
+        try {
+            String Empids = empIds.getValue();
+            if (Empids !=null) {
+                ResultSet rst = Util.execute("select emp_name from employee where emp_id=?", Empids);
+                if (rst.next()) {
+                    String aptid = rst.getString("emp_name");
+                    empName.setText(aptid);
+                }else {
+                    empName.setText("no name found");
+                }
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

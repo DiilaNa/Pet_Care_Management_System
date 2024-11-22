@@ -13,6 +13,5 @@ public class MedicineTM {
     private String MedicineName;
     private String MedicineCondition;
     private Double MedicineWeight;
-    private int Quantity;
 
 }

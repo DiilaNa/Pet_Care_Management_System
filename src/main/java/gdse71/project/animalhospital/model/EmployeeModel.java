@@ -1,9 +1,12 @@
 package gdse71.project.animalhospital.model;
 
 import gdse71.project.animalhospital.CrudUtil.Util;
+import gdse71.project.animalhospital.dto.Docdto;
 import gdse71.project.animalhospital.dto.Employeedto;
 import gdse71.project.animalhospital.dto.Ownerdto;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -27,16 +30,36 @@ public class EmployeeModel {
         }
         return employeedtos;
     }
-    public boolean save(Employeedto employeedto) throws SQLException, ClassNotFoundException {
-        return Util.execute(
-                "insert into employee values (?,?,?,?,?)",
-                employeedto.getEmployeeId(),
-                employeedto.getEmployeeName(),
-                employeedto.getEmployeeDuty(),
-                employeedto.getEmployeeAddress(),
-                employeedto.getEmployeePhone()
+    public boolean save(Employeedto employeedto, Docdto docdto) throws SQLException, ClassNotFoundException {
+        Connection connection =null;
+        try{
+            connection = Util.getConnection();
+            connection.setAutoCommit(false);
 
-        );
+            PreparedStatement employstmnt = connection.prepareStatement("INSERT INTO employee(emp_id,emp_name,duty,address,tel_no) VALUES (?,?,?,?,?)");
+            employstmnt.setString(1, employeedto.getEmployeeId());
+            employstmnt.setString(2, employeedto.getEmployeeName());
+            employstmnt.setString(3, employeedto.getEmployeeDuty());
+            employstmnt.setString(4, employeedto.getEmployeeAddress());
+            employstmnt.setString(5, employeedto.getEmployeePhone());
+            employstmnt.execute();
+
+            PreparedStatement docstmnt = connection.prepareStatement("INSERT INTO doc_details (emp_id,appoint_id)VALUES (?,?)");
+            docstmnt.setString(1, docdto.getEmpid());
+            docstmnt.setString(2, docdto.getAptId());
+            docstmnt.execute();
+
+            connection.commit();
+            return true;
+        } catch (SQLException e) {
+            if (connection != null) {
+                connection.rollback();
+
+            }
+            e.printStackTrace();
+            return false;
+        }
+
     }
     public boolean update(Employeedto employeedto) throws SQLException, ClassNotFoundException {
         return Util.execute(
@@ -49,8 +72,32 @@ public class EmployeeModel {
         );
     }
 
-    public boolean delete(String emp_id) throws SQLException, ClassNotFoundException {
-        return Util.execute("delete from employee where emp_id=?", emp_id);
+    public boolean delete(String emp_id,String apt_id) throws SQLException, ClassNotFoundException {
+        Connection connection =null;
+
+        try{
+            connection = Util.getConnection();
+            connection.setAutoCommit(false);
+
+            PreparedStatement empStmnt = connection.prepareStatement("delete from employee where emp_id=?");
+            empStmnt.setString(1, emp_id);
+            empStmnt.execute();
+
+            PreparedStatement aptStmnt = connection.prepareStatement("delete from doc_details where appoint_id=?");
+            aptStmnt.setString(1, apt_id);
+            aptStmnt.execute();
+
+            connection.commit();
+            return true;
+
+        } catch (Exception e) {
+            if (connection != null) {
+                connection.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        }
+
     }
     public String getNextID(){
         try {

@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,28 +15,31 @@
    <children>
       <ImageView fx:id="image" fitHeight="900.0" fitWidth="1200.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../../Pictures/animall%20hospital/ALL%20PET.png" />
+            <Image url="@../../../../../../../Pictures/animal%20hospital/ALL%20PET.png" />
          </image>
       </ImageView>
-      <Label cache="true" cacheHint="QUALITY" layoutX="499.0" layoutY="79.0" text="PAYMENT DETAILS">
+      <Label cache="true" cacheHint="QUALITY" layoutX="478.0" layoutY="75.0" text="PAYMENT DETAILS">
          <font>
-            <Font name="DejaVu Sans Bold" size="33.0" />
+            <Font name="DejaVu Sans Bold" size="37.0" />
          </font>
       </Label>
       <TextField fx:id="payID" layoutX="535.0" layoutY="199.0" prefHeight="31.0" prefWidth="210.0" promptText="payment_id" style="-fx-background-color: transparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;" />
       <TextField fx:id="payTime" layoutX="535.0" layoutY="268.0" prefHeight="31.0" prefWidth="210.0" promptText="payment_time" style="-fx-background-color: transparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;" />
       <TextField fx:id="payDate" layoutX="904.0" layoutY="199.0" prefHeight="31.0" prefWidth="210.0" promptText="payment_date" style="-fx-background-color: transparent; -fx-border-width: 0 0 1px 0; -fx-border-color: black;" />
-      <Button fx:id="delete" layoutX="904.0" layoutY="308.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="47.0" prefWidth="166.0" style="-fx-background-color: d35400; -fx-background-radius: 12;" text="DELETE" textFill="WHITE">
+      <Button fx:id="delete" layoutX="909.0" layoutY="355.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="48.0" prefWidth="181.0" style="-fx-background-color: d35400; -fx-background-radius: 12;" text="DELETE" textFill="WHITE">
          <font>
             <Font name="DejaVuMathTeXGyre-Regular" size="21.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
       <TableView fx:id="table" layoutY="471.0" onMouseClicked="#tableAction" prefHeight="428.0" prefWidth="1200.0" style="-fx-background-color: f39c12;">
         <columns>
-          <TableColumn fx:id="tablePayID" prefWidth="251.0" text="PAYMENT ID" />
-          <TableColumn fx:id="tableTime" prefWidth="241.0" text="TIME" />
-            <TableColumn fx:id="tableMethod" prefWidth="337.0" text="METHOD" />
-            <TableColumn fx:id="tableDAte" prefWidth="370.0" text="DATE" />
+          <TableColumn fx:id="tablePayID" prefWidth="251.0" text="PAYMENT ID" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;"/>
+          <TableColumn fx:id="tableTime" prefWidth="241.0" text="TIME" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;"/>
+            <TableColumn fx:id="tableMethod" prefWidth="337.0" text="METHOD" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;"/>
+            <TableColumn fx:id="tableDAte" prefWidth="370.0" text="DATE" style="-fx-background-color: #f39c12; -fx-border-color: #000; -fx-border-width: 1 1px 0 0;"/>
         </columns>
       </TableView>
       <Button fx:id="back" layoutX="27.0" layoutY="29.0" mnemonicParsing="false" onAction="#bakAction" style="-fx-background-color: black;" text="BACK" textFill="WHITE" underline="true" />
