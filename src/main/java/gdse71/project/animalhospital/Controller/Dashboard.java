@@ -216,10 +216,5 @@ public class Dashboard {
 
     }
 
-    @FXML
-    void extrsbtnAction(ActionEvent event) {
-
-    }
-
 }
 

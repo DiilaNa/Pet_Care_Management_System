@@ -280,7 +280,6 @@ public class OwnerController implements Initializable {
     }
     @FXML
     void resetbtnAction(ActionEvent event) {
-      //  ownerIDS.setText("");
         name.setText("");
         address.setText("");
         mail.setText("");

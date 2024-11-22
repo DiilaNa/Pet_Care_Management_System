@@ -50,8 +50,7 @@ public class SmsModel {
     }
     public String  getNextMailNo() throws SQLException, ClassNotFoundException {
         try {
-            ResultSet rst = null;
-            rst = Util.execute("select mail_no from mail_reminder order by mail_no desc limit 1");
+            ResultSet rst = Util.execute("select mail_no from mail_reminder order by mail_no desc limit 1");
             if (rst.next()) {
                 String lastId = rst.getString(1); // Last appointment ID
                 String numericPart = lastId.replaceAll("[^0-9]", ""); // Extract numeric part only

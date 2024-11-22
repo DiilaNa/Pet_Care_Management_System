@@ -1,5 +1,6 @@
 package gdse71.project.animalhospital.Controller;
 
+import gdse71.project.animalhospital.db.DBConnection;
 import gdse71.project.animalhospital.dto.Invoicedto;
 import gdse71.project.animalhospital.dto.PetTm.InvoiceTM;
 import gdse71.project.animalhospital.model.InvoiceModel;
@@ -40,6 +41,8 @@ public class InvoiceController implements Initializable {
     @FXML
     private TextField paymentInvName;
 
+    @FXML
+    private Button reset;
 
     @FXML
     private Button save;
@@ -91,7 +94,7 @@ public class InvoiceController implements Initializable {
 
         try {
             refreshPage();
-            loadPayID();
+
         } catch (Exception e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, "Fail to load id").show();
@@ -198,7 +201,6 @@ public class InvoiceController implements Initializable {
             delete.setDisable(false);
             update.setDisable(false);
         }
-
     }
 
     @FXML
@@ -244,9 +246,9 @@ public class InvoiceController implements Initializable {
     private void refreshPage() throws SQLException, ClassNotFoundException {
 
         loadTableData();
+        loadPayID();
         loadNextInvoiceID();
         loadAptPrice();
-        //loadServiceBookingPrice();
 
         save.setDisable(false);
 
@@ -274,17 +276,13 @@ public class InvoiceController implements Initializable {
         table.setItems(invoiceTMS);
     }
     public void loadNextInvoiceID()  {
-        String nextId = null;
-        nextId = invoiceModel.getNextInvoiceId();
+        String nextId = invoiceModel.getNextInvoiceId();
         invNO.setText(nextId);
 
     }
     private void loadPayID() throws SQLException {
-        final Connection connection;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/animal_hospital", "root", "Ijse@1234");
-
+            Connection connection = DBConnection.getInstance().getConnection();
             ResultSet rs = connection.createStatement().executeQuery("SELECT payment_id FROM payment");
             ObservableList<String> data = FXCollections.observableArrayList();
 
@@ -297,17 +295,19 @@ public class InvoiceController implements Initializable {
         }
     }
     public void loadAptPrice()  {
-
         Double aptPrice = 5000.00;
         defaultPrice.setText(aptPrice.toString());
-
-
-    }/*
-    public void loadServiceBookingPrice() throws SQLException  {
-        Double servPrice = null;
-        servPrice = invoiceModel.getServicePrice();
-        servicePrice.setText(String.valueOf(servPrice));
-
-    }*/
+    }
+    @FXML
+    void resetAction(ActionEvent event) {
+        try {
+            loadAptPrice();
+            loadNextInvoiceID();
+            loadPayID();
+            paymentInvName.setText("");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

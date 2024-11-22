@@ -63,6 +63,6 @@ public class ServiceModel {
             } catch (RuntimeException | ClassNotFoundException | SQLException e) {
                 throw new RuntimeException(e);
             }
-            return "SVS001";
+            return "SVC001";
         }
 }

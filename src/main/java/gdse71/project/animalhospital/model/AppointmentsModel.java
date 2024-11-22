@@ -70,8 +70,7 @@ public class AppointmentsModel {
     }
     public String getNextPayId(){
         try {
-            ResultSet rst = null;
-            rst = Util.execute("select payment_id from payment order by payment_id desc limit 1");
+            ResultSet rst = Util.execute("select payment_id from payment order by payment_id desc limit 1");
             if (rst.next()) {
                 String lastId = rst.getString(1);
                 String numericPart = lastId.replaceAll("[^0-9]", "");

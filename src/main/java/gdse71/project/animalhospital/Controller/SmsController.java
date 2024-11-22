@@ -1,5 +1,6 @@
 package gdse71.project.animalhospital.Controller;
 
+import gdse71.project.animalhospital.db.DBConnection;
 import gdse71.project.animalhospital.dto.PetTm.SmsTM;
 import gdse71.project.animalhospital.dto.Smsdto;
 import gdse71.project.animalhospital.model.SmsModel;
@@ -269,11 +270,8 @@ public class SmsController implements Initializable {
 
     }
     private void loadAppointmentId() throws SQLException {
-        final Connection connection;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/animal_hospital", "root", "Ijse@1234");
-
+            Connection connection = DBConnection.getInstance().getConnection();
             ResultSet rs = connection.createStatement().executeQuery("SELECT appointment_id FROM appointments");
             ObservableList<String> data = FXCollections.observableArrayList();
 

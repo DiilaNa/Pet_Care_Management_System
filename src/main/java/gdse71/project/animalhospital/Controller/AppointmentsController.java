@@ -192,13 +192,10 @@ private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:
             String appointmentTime = addTime.getText();
             String ownerId = ownerid.getText();
             String petId = PeTid.getText();
-
             String pettype = petType.getValue();
             String paymentId = PaymentId.getText();
             String paymentDate = LocalDate.now().format(formatter);
             String paymentTime = LocalTime.now().format(timeFormatter);
-
-
             String ownerMail = ownerMailTXT.getText();
             String ownerName = ownerNAmeTXT.getText();
             String ownerAddress = ownerAddressTXT.getText();
@@ -216,11 +213,11 @@ private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:
             // Validation patterns
             String namePattern = "^[a-zA-Z ]+$";
             String addressPattern = "^[a-zA-Z0-9, -]+$";
-            //String mailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+            String mailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
 
             boolean isValidName = ownerName.matches(namePattern);
             boolean isValidAddress = ownerAddress.matches(addressPattern);
-          //  boolean isValidMail = ownerMail.matches(mailPattern);
+           boolean isValidMail = ownerMail.matches(mailPattern);
 
             if (!isValidName) {
                 ownerNAmeTXT.setStyle(ownerNAmeTXT.getStyle() + ";-fx-border-color: red;");
@@ -230,10 +227,10 @@ private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:
                 ownerAddressTXT.setStyle(ownerAddressTXT.getStyle() + ";-fx-border-color: red;");
                 System.out.println("Invalid address: " + ownerAddress);
             }
-           /* if (!isValidMail) {
+            if (!isValidMail) {
                 ownerMailTXT.setStyle(ownerMailTXT.getStyle() + ";-fx-border-color: red;");
                 System.out.println("Invalid mail: " + ownerMail);
-            }*/
+            }
 
             if (isValidName && isValidAddress) {
                 Appointmentsdto appointment = new Appointmentsdto(

@@ -10,7 +10,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="900.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gdse71.project.animalhospital.Controller.InvoiceController">
@@ -20,34 +19,6 @@
             <Image url="@../../../../../../../Pictures/animal%20hospital/ALL%20PET.png" />
          </image>
       </ImageView>
-      <Pane layoutX="991.0" prefHeight="907.0" prefWidth="211.0" style="-fx-background-color: black;">
-         <children>
-            <Button fx:id="save" layoutX="39.0" layoutY="105.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="49.0" prefWidth="153.0" style="-fx-background-radius: 12; -fx-background-color: d35400;" text="SAVE" textFill="WHITE">
-               <font>
-                  <Font name="DejaVu Sans Mono Bold Oblique" size="24.0" />
-               </font>
-               <effect>
-                  <ColorAdjust brightness="0.12" contrast="0.14" />
-               </effect>
-            </Button>
-            <Button fx:id="update" layoutX="39.0" layoutY="205.0" mnemonicParsing="false" onAction="#updateAction" prefHeight="49.0" prefWidth="153.0" style="-fx-background-radius: 12; -fx-background-color: d35400;" text="UPDATE" textFill="WHITE">
-               <font>
-                  <Font name="DejaVu Sans Mono Bold Oblique" size="26.0" />
-               </font>
-               <effect>
-                  <ColorAdjust brightness="0.12" contrast="0.12" />
-               </effect>
-            </Button>
-            <Button fx:id="delete" layoutX="39.0" layoutY="305.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="49.0" prefWidth="153.0" style="-fx-background-radius: 12; -fx-background-color: d35400;" text="DELETE" textFill="WHITE">
-               <font>
-                  <Font name="DejaVu Sans Mono Bold Oblique" size="26.0" />
-               </font>
-               <effect>
-                  <ColorAdjust brightness="0.12" contrast="0.14" />
-               </effect>
-            </Button>
-         </children>
-      </Pane>
       <Label layoutX="404.0" layoutY="40.0" text="INVOICE DETAILS">
          <font>
             <Font name="DejaVu Sans Bold" size="36.0" />
@@ -94,5 +65,37 @@
             <Font name="DejaVu Sans Bold" size="26.0" />
          </font>
       </Label>
+      <Button fx:id="save" layoutX="311.0" layoutY="376.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="49.0" prefWidth="153.0" style="-fx-background-radius: 12; -fx-background-color: d35400;" text="SAVE" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Mono Bold Oblique" size="24.0" />
+         </font>
+         <effect>
+            <ColorAdjust brightness="0.12" contrast="0.14" />
+         </effect>
+      </Button>
+      <Button fx:id="update" layoutX="552.0" layoutY="376.0" mnemonicParsing="false" onAction="#updateAction" prefHeight="49.0" prefWidth="153.0" style="-fx-background-radius: 12; -fx-background-color: d35400;" text="UPDATE" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Mono Bold Oblique" size="26.0" />
+         </font>
+         <effect>
+            <ColorAdjust brightness="0.12" contrast="0.12" />
+         </effect>
+      </Button>
+      <Button fx:id="delete" layoutX="768.0" layoutY="376.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="49.0" prefWidth="153.0" style="-fx-background-radius: 12; -fx-background-color: d35400;" text="DELETE" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Mono Bold Oblique" size="26.0" />
+         </font>
+         <effect>
+            <ColorAdjust brightness="0.12" contrast="0.14" />
+         </effect>
+      </Button>
+      <Button fx:id="reset" layoutX="982.0" layoutY="376.0" mnemonicParsing="false" onAction="#resetAction" prefHeight="49.0" prefWidth="153.0" style="-fx-background-radius: 12; -fx-background-color: d35400;" text="RESET" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Mono Bold Oblique" size="26.0" />
+         </font>
+         <effect>
+            <ColorAdjust brightness="0.12" contrast="0.14" />
+         </effect>
+      </Button>
    </children>
 </AnchorPane>
