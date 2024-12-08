@@ -261,12 +261,7 @@ private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:
                         ownerId,
                         pettype
                 );
-
-                System.out.println(petId);
                 boolean isSaved = appointmentsModel.save(appointment,petdto,ownerdto,paymentDto);
-               // petModel.savePet(petdto);
-
-
                 if (isSaved) {
                     refreshPage();
                     new Alert(Alert.AlertType.INFORMATION, "Appointment Saved!").show();
@@ -303,8 +298,7 @@ private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:
         }
         public void loadNextAppointmentID()  {
             try {
-                String nextCustomerId = null;
-                nextCustomerId = appointmentsModel.getNextAppointmentID();
+                String nextCustomerId = appointmentsModel.getNextAppointmentID();
                 AppointmentID.setText(nextCustomerId);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -334,7 +328,6 @@ private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:
     private void loadAptid() throws SQLException {
         try {
             Connection connection = DBConnection.getInstance().getConnection();
-
             ResultSet rs = connection.createStatement().executeQuery("SELECT appointment_id FROM appointments");
             ObservableList<String> data = FXCollections.observableArrayList();
 

@@ -13,8 +13,7 @@ import java.util.ArrayList;
 public class AppointmentsModel {
     public String getNextAppointmentID() throws SQLException {
         try {
-            ResultSet rst = null;
-            rst = Util.execute("select appointment_id from appointments order by appointment_id desc limit 1");
+            ResultSet rst = Util.execute("select appointment_id from appointments order by appointment_id desc limit 1");
             if (rst.next()) {
                 String lastId = rst.getString(1); // Last appointment ID
                 String numericPart = lastId.replaceAll("[^0-9]", ""); // Extract numeric part only
@@ -32,8 +31,7 @@ public class AppointmentsModel {
     }
     public String  getNextPetId() {
         try {
-            ResultSet rst = null;
-            rst = Util.execute("select pet_id from pet order by pet_id desc limit 1");
+            ResultSet rst = Util.execute("select pet_id from pet order by pet_id desc limit 1");
             if (rst.next()) {
                 String lastId = rst.getString(1); // Last appointment ID
                 String numericPart = lastId.replaceAll("[^0-9]", ""); // Extract numeric part only
@@ -51,8 +49,7 @@ public class AppointmentsModel {
     }
     public String  getNextOwnerId(){
         try {
-            ResultSet rst = null;
-            rst = Util.execute("select owner_id from owner order by owner_id desc limit 1");
+            ResultSet rst = Util.execute("select owner_id from owner order by owner_id desc limit 1");
             if (rst.next()) {
                 String lastId = rst.getString(1); // Last appointment ID
                 String numericPart = lastId.replaceAll("[^0-9]", ""); // Extract numeric part only
@@ -86,25 +83,6 @@ public class AppointmentsModel {
         }
         return "PAY001";
     }
-/*
-    public ArrayList<Appointmentsdto> getAll() throws SQLException, ClassNotFoundException {
-        ResultSet rst =  Util.execute("SELECT * from appointments");
-
-        ArrayList<Appointmentsdto> appointmentsdtos = new ArrayList<>();
-
-        while (rst.next()){
-            Appointmentsdto appointmentsdto = new Appointmentsdto(
-                    rst.getString(1),
-                    rst.getString(2),
-                    rst.getString(3),
-                    rst.getString(4)
-
-
-            );
-            appointmentsdtos.add(appointmentsdto);
-        }
-        return appointmentsdtos;
-    }*/
     public boolean save(Appointmentsdto appointmentsdto, Petdto petdto , Ownerdto ownerdto , PaymentDto paymentDto) throws SQLException, ClassNotFoundException {
             Connection connection = null;
             try {
